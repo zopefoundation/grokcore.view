@@ -4,8 +4,10 @@ Changes
 2.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Add a ``skin=[skin component]`` argument to the ``grokcore.view.util.url()``
+  function and ``grokcore.view.components.View.url`` method. This allows for
+  computing URLs on a specific skin. Note that it is not verified whether
+  the computed URL actually exist on the specified skin.
 
 2.7 (2012-05-01)
 ----------------
