@@ -25,6 +25,7 @@ import directive
 
 ASIS = object()
 
+
 def url(request, obj, name=None, skin=ASIS, data=None):
     url = getMultiAdapter((obj, request), IAbsoluteURL)()
     if name is not None:
@@ -40,8 +41,12 @@ def url(request, obj, name=None, skin=ASIS, data=None):
             path = path[idx:]
         if skin is not None:
             # If a skin is set, add ``++skin++`` as the leading path segment.
-            name = directive.skin.bind().get(skin)
-            path = '/++skin++%s%s' % (name, path)
+            if isinstance(skin, basestring):
+                path = '/++skin++%s%s' % (skin, path)
+            else:
+                path = '/++skin++%s%s' % (
+                    directive.skin.bind().get(skin), path)
+
         parts[2] = path
         url = urlparse.urlunparse(parts)
 
