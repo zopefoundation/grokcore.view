@@ -72,12 +72,13 @@ view on the context object will be constructed:
   >>> another_view.url('yet_another_view')
   'http://127.0.0.1/herd/manfred/yet_another_view'
 
-The url() method supports a data argument which is converted to a CGI type query
-string. If any of the values are of type unicode it's converted to a string
-assuming the encoding is UTF-8.
+The url() method supports a data argument which is converted to a CGI
+type query string. If any of the values are of type unicode it's
+converted to a string assuming the encoding is UTF-8.
 
-There is some object/name/data resolution code available that provides the magic
-to make mixing of positional arguments and keyword arguments work.
+There is some object/name/data resolution code available that provides
+the magic to make mixing of positional arguments and keyword arguments
+work.
 
 This is the key word argument signature::
 
@@ -122,12 +123,12 @@ Some combinations of arguments just don't make sense:
   >>> another_view.url('foo', 'bar')
   Traceback (most recent call last):
     ...
-  TypeError: url() takes either obj argument, obj, string arguments, or string \
+  TypeError: url() takes either obj argument, obj, string arguments, or string
   argument
   >>> another_view.url('foo', herd)
   Traceback (most recent call last):
     ...
-  TypeError: url() takes either obj argument, obj, string arguments, or string \
+  TypeError: url() takes either obj argument, obj, string arguments, or string
   argument
   >>> another_view.url(herd, 'bar', data='baz')
   Traceback (most recent call last):
@@ -203,12 +204,10 @@ Use another skin:
   >>> index_view.url(skin=AnotherURLTestingSkin)
   'http://127.0.0.1/++skin++anotherurltesting/herd/manfred/test'
 
-Use something that is not a skin will fail:
+When providing a skin **name**, it will be injected in the URLs:
 
   >>> index_view.url(skin='foobar')
-  Traceback (most recent call last):
-  ...
-  AttributeError: 'str' object has no attribute 'queryTaggedValue'
+  'http://127.0.0.1/++skin++foobar/herd/manfred/test'
 
 """
 import grokcore.view as grok

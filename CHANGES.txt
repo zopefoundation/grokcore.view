@@ -8,7 +8,6 @@ Changes
   strings that will be used as skin name as possible alternative to a
   skin interface.
 
-
 2.8 (2012-12-11)
 ----------------
 
