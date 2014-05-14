@@ -4,10 +4,15 @@ Changes
 2.9 (unreleased)
 ----------------
 
+- Make possible to disable the template warning with the help of the
+  ``GROK_DISABLE_TEMPLATE_WARNING`` environment variable.
+
 - The ``skin`` option of ``grokcore.view.util.url`` now accepts
   strings that will be used as skin name as possible alternative to a
   skin interface.
 
+- The ``skin`` directive can now be used on interfaces that inherits
+  only from ``IRequest`` instead of ``IBrowserRequest``.
 
 2.8 (2012-12-11)
 ----------------
