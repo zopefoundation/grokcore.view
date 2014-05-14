@@ -13,10 +13,12 @@
 ##############################################################################
 """Grokkers for templates."""
 import sys
+import os
 import martian
 
 from grokcore.view import components
 from grokcore.view import templatereg
+
 
 class ModulePageTemplateGrokker(martian.InstanceGrokker):
     martian.component(components.BaseTemplate)
@@ -60,7 +62,8 @@ class UnassociatedTemplatesGrokker(martian.GlobalGrokker):
     martian.priority(-1001)
     # XXX: The action should be registered only once, not for each module.
     # There should be a way to register the action without a module grokker...
-    _action_registered = False
+    _action_registered = os.environ.get(
+        'GROK_DISABLE_TEMPLATE_WARNING', 'no').lower() in ('yes', 'on', 'true')
 
     def grok(self, name, module, module_info, config, **kw):
         if not self._action_registered:
@@ -74,4 +77,3 @@ class UnassociatedTemplatesGrokker(martian.GlobalGrokker):
                 order=sys.maxint
                 )
         return True
-

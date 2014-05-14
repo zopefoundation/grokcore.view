@@ -15,7 +15,7 @@
 
 
 from zope.interface.interface import InterfaceClass
-from zope.publisher.interfaces.browser import IBrowserRequest
+from zope.publisher.interfaces import IRequest
 from zope.publisher.interfaces.browser import IBrowserSkinType
 
 import martian
@@ -36,11 +36,11 @@ class SkinInterfaceDirectiveGrokker(martian.InstanceGrokker):
             # The skin directive is not actually used on the found interface.
             return False
 
-        if not interface.extends(IBrowserRequest):
-            # For layers it is required to extend IBrowserRequest.
+        if not interface.extends(IRequest):
+            # For layers it is required to extend IRequest.
             raise GrokError(
                 "The grok.skin() directive is used on interface %r. "
-                "However, %r does not extend IBrowserRequest which is "
+                "However, %r does not extend IRequest which is "
                 "required for interfaces that are used as layers and are to "
                 "be registered as a skin."
                 % (interface.__identifier__, interface.__identifier__),

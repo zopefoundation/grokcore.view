@@ -43,8 +43,7 @@ class InlineTemplateRegistry(object):
     def register_inline_template(self, module_info, template_name, template):
         # verify no file template got registered with the same name
         try:
-            existing_template = file_template_registry.lookup(
-                module_info, template_name)
+            file_template_registry.lookup(module_info, template_name)
         except TemplateLookupError:
             pass
         else:
@@ -147,7 +146,7 @@ class FileTemplateRegistry(object):
                             (template_name, module_info.dotted_name,
                              template_dir), None)
 
-        extension = extension[1:] # Get rid of the leading dot.
+        extension = extension[1:]  # Get rid of the leading dot.
 
         template_factory = zope.component.queryUtility(
             grokcore.view.interfaces.ITemplateFileFactory,
@@ -210,12 +209,15 @@ class FileTemplateRegistry(object):
 inline_template_registry = InlineTemplateRegistry()
 file_template_registry = FileTemplateRegistry()
 
+
 def register_inline_template(module_info, template_name, template):
     return inline_template_registry.register_inline_template(
         module_info, template_name, template)
 
+
 def register_directory(module_info):
     return file_template_registry.register_directory(module_info)
+
 
 def _clear():
     """Remove the registries (for use by tests)."""
@@ -231,6 +233,7 @@ else:
     addCleanUp(_clear)
     del addCleanUp
 
+
 def lookup(module_info, template_name, mark_as_associated=False):
     try:
         return file_template_registry.lookup(
@@ -239,9 +242,10 @@ def lookup(module_info, template_name, mark_as_associated=False):
         try:
             return inline_template_registry.lookup(
                 module_info, template_name, mark_as_associated)
-        except TemplateLookupError, e2:
+        except TemplateLookupError:
             # re-raise first error again
             raise e
+
 
 def check_unassociated():
     unassociated = inline_template_registry.unassociated()
@@ -256,7 +260,7 @@ def check_unassociated():
     for template_name in unassociated:
         msg = (
             "Found the following unassociated template "
-            "after configuration: %s"  % (
+            "after configuration: %s" % (
                 template_name))
         warnings.warn(msg, UserWarning, 1)
 
@@ -324,7 +328,7 @@ def associate_template(module_info, factory, component_name,
                 (template_name, component_name.title(), factory), factory)
 
         # Check for render or error.
-        if  has_no_render(factory):
+        if has_no_render(factory):
             raise GrokError(
                 "%s %r has no associated template or 'render' method." %
                 (component_name.title(), factory), factory)
@@ -352,5 +356,3 @@ class PageTemplateFileFactory(grokcore.component.GlobalUtility):
 
     def __call__(self, filename, _prefix=None):
         return PageTemplate(filename=filename, _prefix=_prefix)
-
-
