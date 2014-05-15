@@ -1,7 +1,7 @@
 Changes
 =======
 
-2.9 (unreleased)
+2.9 (2014-05-15)
 ----------------
 
 - Make possible to disable the template warning with the help of the
