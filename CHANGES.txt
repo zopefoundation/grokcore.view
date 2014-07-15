@@ -4,7 +4,8 @@ Changes
 2.10 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Add an helper ``render_provider`` to look up and render a given
+  content provider.
 
 
 2.9 (2014-05-15)

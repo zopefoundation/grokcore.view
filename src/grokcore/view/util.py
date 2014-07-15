@@ -18,6 +18,7 @@ import urlparse
 from grokcore.security.util import check_permission
 from zope.component import getMultiAdapter
 from zope.security.checker import NamesChecker, defineChecker
+from zope.contentprovider.interfaces import IContentProvider
 from zope.traversing.browser.absoluteurl import _safe as SAFE_URL_CHARACTERS
 from zope.traversing.browser.interfaces import IAbsoluteURL
 
@@ -65,6 +66,13 @@ def url(request, obj, name=None, skin=ASIS, data=None):
                 or item for item in v]
 
     return url + '?' + urllib.urlencode(data, doseq=True)
+
+
+def render_provider(context, request, view, name):
+    provider = getMultiAdapter(
+        (context, request, view), interface=IContentProvider, name=name)
+    provider.update()
+    return provider.render()
 
 
 def make_checker(factory, view_factory, permission, method_names=None):

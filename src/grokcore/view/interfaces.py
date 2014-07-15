@@ -68,6 +68,10 @@ class IGrokcoreViewAPI(IBaseClasses, IDirectives):
         An optional argument 'data' can be a dictionary that is converted
         into a query string appended to the URL."""
 
+    def render_provider(obj, request, view, name):
+        """Look for and render a content provider.
+        """
+
     def make_checker(factory, view_factory, permission, method_names=None):
         """Make a checker for a view_factory associated with factory.
 

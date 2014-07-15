@@ -1,5 +1,4 @@
-"""
-A grok.ContentProvider instance has references to the components it was
+"""A grok.ContentProvider instance has references to the components it was
 registered for::
 
   >>> grok.testing.grok(__name__)
@@ -21,6 +20,12 @@ registered for::
   True
 
   >>> provider.render()
+  u'I provide some content for a view'
+
+You can use the helper method render_provider to directly find and
+render it:
+
+  >>> grok.render_provider(ctxt, request, view, 'a_content_provider')
   u'I provide some content for a view'
 
 """
