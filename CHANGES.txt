@@ -4,7 +4,7 @@ Changes
 2.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fix broken MANIFEST.in
 
 
 2.10 (2014-07-29)
