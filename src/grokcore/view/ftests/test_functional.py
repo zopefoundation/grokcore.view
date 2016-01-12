@@ -1,20 +1,22 @@
+import doctest
+import os.path
 import re
 import unittest
-import os.path
-import grokcore.view
-
 from pkg_resources import resource_listdir
 
 from zope.app.wsgi.testlayer import BrowserLayer, http
-from zope.testing import doctest, renormalizing
+from zope.testing import renormalizing
+import grokcore.view
 
 
 FunctionalLayer = BrowserLayer(grokcore.view)
+
 
 checker = renormalizing.RENormalizing([
     # Accommodate to exception wrapping in newer versions of mechanize
     (re.compile(r'httperror_seek_wrapper:', re.M), 'HTTPError:'),
     ])
+
 
 def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
@@ -22,9 +24,10 @@ def suiteFromPackage(name):
     getRootFolder = FunctionalLayer.getRootFolder
     globs = dict(http=http,
                  getRootFolder=getRootFolder)
-    optionflags = (doctest.ELLIPSIS+
-                   doctest.NORMALIZE_WHITESPACE+
-                   doctest.REPORT_NDIFF)
+    optionflags = (
+        doctest.ELLIPSIS +
+        doctest.NORMALIZE_WHITESPACE +
+        doctest.REPORT_NDIFF)
 
     for filename in files:
         if filename == '__init__.py':
@@ -49,14 +52,14 @@ def suiteFromPackage(name):
             suite.addTest(test)
     return suite
 
+
 def test_suite():
     suite = unittest.TestSuite()
     for name in [
-        'contentprovider',
-        'directoryresource',
-        'static',
-        'url',
-        'view',
-        ]:
+            'contentprovider',
+            'directoryresource',
+            'static',
+            'url',
+            'view']:
         suite.addTest(suiteFromPackage(name))
     return suite
