@@ -30,20 +30,25 @@ point to mammoth:
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class Index(grok.View):
     def render(self):
         self.redirect(self.url('another'))
 
+
 class TrustedRedirect(grok.View):
     def render(self):
         self.redirect('http://www.google.com/ncr', trusted=True)
 
+
 class RedirectWithStatus(grok.View):
     def render(self):
         self.redirect(self.url(), status=418)
+
 
 class Another(grok.View):
     def render(self):

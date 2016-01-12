@@ -15,7 +15,7 @@
 
 import os
 
-from zope import interface, component
+from zope import interface
 from zope.security.checker import NamesChecker
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
