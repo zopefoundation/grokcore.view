@@ -260,4 +260,4 @@ class URLTestingViewOnASkin(grok.View):
     grok.name('test')
 
     def render(self):
-        return u"I'm on a url testing skin: {}".format(self.url())
+        return u"I'm on a url testing skin: {0}".format(self.url())
