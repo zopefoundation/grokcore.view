@@ -1,10 +1,11 @@
 
+import doctest
 import os
 import re
 import unittest
 from pkg_resources import resource_listdir
 
-from zope.testing import doctest, cleanup, renormalizing
+from zope.testing import cleanup, renormalizing
 import zope.component.eventtesting
 
 import grokcore.view

@@ -4,7 +4,7 @@ Changes
 2.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Remove dependency on zope.testing.doctest
 
 
 2.10.1 (2014-07-29)
