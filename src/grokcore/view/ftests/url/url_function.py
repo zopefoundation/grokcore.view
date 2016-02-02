@@ -68,10 +68,10 @@ converted to a string assuming the encoding is UTF-8:
 
   >>> url(request, herd, '@@sample_view', data=dict(age=28))
   'http://127.0.0.1/herd/@@sample_view?age=28'
-  
+
   >>> url(request, herd, data=dict(age=28))
   'http://127.0.0.1/herd?age=28'
-  
+
 There is no problem putting one of the 'reserved' arguments inside the data
 argument or explicitely supplying 'None':
 
@@ -92,10 +92,10 @@ keywords by using find()
   >>> withquery = url(request, herd, 'sample_view', data=dict(a=1, b=2, c=3))
   >>> withquery.find('a=1') > -1
   True
-  
+
   >>> withquery.find('b=2') > -1
   True
-  
+
   >>> withquery.find('c=3') > -1
   True
 
@@ -109,14 +109,18 @@ import grokcore.view as grok
 from grokcore.view import url
 from zope.container.contained import Contained
 
+
 class Mammoth(Contained):
     pass
 
+
 grok.context(Mammoth)
+
 
 class Index(grok.View):
     def render(self):
         return url(self.request, self)
+
 
 class Another(grok.View):
     def render(self):

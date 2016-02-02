@@ -155,9 +155,10 @@ properly:
   >>> print result
   http://127.0.0.1/herd/manfred/index?key=%C3%A9&key=2
 
-  >>> import cgi
-  >>> print unicode(cgi.parse_qs(result.split('?')[1])['key'][0], 'utf-8')
-  é
+  >>> from cgi import parse_qs
+  >>> expected = unicode('é', 'UTF-8')
+  >>> unicode(parse_qs(result.split('?')[1])['key'][0], 'UTF-8') == expected
+  True
 
 Zope magic!! Here we test casting parameters in the CGI query string:
 
@@ -213,21 +214,27 @@ When providing a skin **name**, it will be injected in the URLs:
 import grokcore.view as grok
 from zope.container.contained import Contained
 
+
 class Mammoth(Contained):
     pass
 
+
 grok.context(Mammoth)
+
 
 class Index(grok.View):
     def render(self):
         return self.url()
 
+
 class Another(grok.View):
     def render(self):
         return self.url()
 
+
 class YetAnother(grok.View):
     pass
+
 
 class Multiplier(grok.View):
     def update(self, age=0):
@@ -236,17 +243,21 @@ class Multiplier(grok.View):
     def render(self):
         return unicode(self.age * 2)
 
+
 yetanother = grok.PageTemplate('<p tal:replace="view/url" />')
+
 
 class URLTestingSkin(grok.IBrowserRequest):
     grok.skin('urltesting')
 
+
 class AnotherURLTestingSkin(grok.IBrowserRequest):
     grok.skin('anotherurltesting')
+
 
 class URLTestingViewOnASkin(grok.View):
     grok.layer(URLTestingSkin)
     grok.name('test')
 
     def render(self):
-        return u"I'm on a url testing skin: %s" % self.url()
+        return u"I'm on a url testing skin: {0}".format(self.url())

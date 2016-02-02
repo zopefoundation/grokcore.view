@@ -1,3 +1,7 @@
-recursive-include src/grokcore/view *.*
+global-include *.mo
 include *.txt
-global-exclude *pyc
+include *.rst
+include bootstrap.py
+include buildout.cfg
+include .travis.yml
+recursive-include src *.cache *.css *.html *.mtl *.pt *.py *.txt *.zcml

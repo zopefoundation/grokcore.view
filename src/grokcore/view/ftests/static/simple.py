@@ -1,9 +1,8 @@
-"""
-We use a special name 'static' in page templates to allow easy linking
+"""We use a special name 'static' in page templates to allow easy linking
 to resources.
 
-In the context of a grok application, you can use fanstatic (through zope.fanstatic)
-instead of the dummy implementation in this test:
+In the context of a grok application, you can use fanstatic (through
+zope.fanstatic) instead of the dummy implementation in this test:
 
   >>> from zope.app.wsgi.testlayer import Browser
   >>> browser = Browser()
@@ -25,7 +24,7 @@ import zope.component
 
 from zope.traversing.interfaces import ITraversable
 from zope.traversing.browser.interfaces import IAbsoluteURL
-from zope.publisher.interfaces.browser import IBrowserRequest
+
 
 class DummyResource(object):
     """ Dummy resource implementation. """
@@ -41,8 +40,3 @@ class DummyResource(object):
 
     def __str__(self):
         return 'dummy:%s' % self.name
-
-zope.component.provideAdapter(factory=DummyResource,
-    adapts=(IBrowserRequest,),
-    provides=zope.interface.Interface,
-    name='grokcore.view.ftests.static.simple_fixture')

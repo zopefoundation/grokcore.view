@@ -4,7 +4,7 @@ Changes
 2.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Update tests.
 
 
 2.10.1 (2014-07-29)

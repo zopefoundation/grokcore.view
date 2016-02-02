@@ -65,4 +65,11 @@
   <grantAll role="zope.Manager" />
   <grant role="zope.Manager" principal="zope.mgr" />
 
+  <!-- Register a test fixture -->
+  <adapter
+     factory="grokcore.view.ftests.static.simple.DummyResource"
+     for="zope.publisher.interfaces.browser.IBrowserRequest"
+     provides="zope.interface.Interface"
+     name="grokcore.view.ftests.static.simple_fixture" />
+
 </configure>
