@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
@@ -11,7 +12,7 @@ long_description = (
     )
 
 install_requires = [
-    'grokcore.component >= 2.5dev',
+    'grokcore.component >= 2.5',
     'grokcore.security >= 1.5',
     'martian >= 0.13',
     'setuptools',
