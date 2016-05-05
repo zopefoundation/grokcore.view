@@ -162,6 +162,9 @@ class FileTemplateRegistry(object):
                               "for pt files. Now the file '%s' in '%s' "
                               "cannot be rendered" %
                               (template_file, template_dir), UserWarning, 2)
+            elif extension == '':
+                """Don't choke on subdirs or files without extensions."""
+                return
             else:
                 warnings.warn("File '%s' has an unrecognized extension in "
                               "directory '%s'" %
