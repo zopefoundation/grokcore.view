@@ -24,6 +24,11 @@ emits no warning::
 The same applies to files and directories ending with '~' or starting
 with a dot ('.').
 
+Subdirectories of the template directory are not warned about either::
+
+  >>> 'subdir' in lastwarning
+  False
+
 Restore the warning machinery::
 
   >>> warnings.warn = saved_warn

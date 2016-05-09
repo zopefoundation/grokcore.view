@@ -117,7 +117,8 @@ class FileTemplateRegistry(object):
 
         for template_file in os.listdir(template_dir):
             template_path = os.path.join(template_dir, template_file)
-            self._register_template_file(module_info, template_path)
+            if os.path.isfile(template_path):
+                self._register_template_file(module_info, template_path)
 
         self._registered_directories.add(template_dir)
 
@@ -162,6 +163,9 @@ class FileTemplateRegistry(object):
                               "for pt files. Now the file '%s' in '%s' "
                               "cannot be rendered" %
                               (template_file, template_dir), UserWarning, 2)
+            elif extension == '':
+                """Don't choke on subdirs or files without extensions."""
+                return
             else:
                 warnings.warn("File '%s' has an unrecognized extension in "
                               "directory '%s'" %
