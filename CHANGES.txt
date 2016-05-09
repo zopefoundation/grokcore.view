@@ -4,7 +4,8 @@ Changes
 2.11 (unreleased)
 -----------------
 
-- In the template directory grokker, ignore files without extensions.
+- In the template directory grokker, ignore directories and files
+  without extensions.
 
 
 2.10.2 (2016-02-02)
