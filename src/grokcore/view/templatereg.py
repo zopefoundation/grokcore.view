@@ -242,7 +242,7 @@ def lookup(module_info, template_name, mark_as_associated=False):
     try:
         return file_template_registry.lookup(
             module_info, template_name, mark_as_associated)
-    except TemplateLookupError, e:
+    except TemplateLookupError as e:
         try:
             return inline_template_registry.lookup(
                 module_info, template_name, mark_as_associated)
