@@ -123,7 +123,7 @@ class ViewSupport(object):
         return util.url(self.request, obj, name, skin, data)
 
 
-@implementer(interfaces.IGrokView)
+@interface.implementer(interfaces.IGrokView)
 class View(ViewSupport, BrowserPage):
 
     def __init__(self, context, request):
@@ -222,7 +222,7 @@ CodeView = View
 
 
 
-@implementer(interfaces.ITemplate)
+@interface.implementer(interfaces.ITemplate)
 class BaseTemplate(object):
     """Any sort of page template"""
 
@@ -241,7 +241,7 @@ class BaseTemplate(object):
         pass
 
 
-@implementer(interfaces.IContentProvider)
+@interface.implementer(interfaces.IContentProvider)
 class ContentProvider(ContentProviderBase):
 
     template = None
