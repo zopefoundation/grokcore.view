@@ -123,8 +123,8 @@ class ViewSupport(object):
         return util.url(self.request, obj, name, skin, data)
 
 
+@implementer(interfaces.IGrokView)
 class View(ViewSupport, BrowserPage):
-    interface.implements(interfaces.IGrokView)
 
     def __init__(self, context, request):
         super(View, self).__init__(context, request)
@@ -221,10 +221,10 @@ class View(ViewSupport, BrowserPage):
 CodeView = View
 
 
+
+@implementer(interfaces.ITemplate)
 class BaseTemplate(object):
     """Any sort of page template"""
-
-    interface.implements(interfaces.ITemplate)
 
     __grok_name__ = ''
     __grok_location__ = ''
@@ -240,8 +240,9 @@ class BaseTemplate(object):
     def _initFactory(self, factory):
         pass
 
+
+@implementer(interfaces.IContentProvider)
 class ContentProvider(ContentProviderBase):
-    interface.implements(interfaces.IContentProvider)
 
     template = None
 
