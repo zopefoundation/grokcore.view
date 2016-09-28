@@ -13,16 +13,22 @@
 ##############################################################################
 """Grok utility functions.
 """
-import urllib
-import urlparse
+import sys
+PY3 = sys.version_info > (3,)
+if PY3:
+    from urllib.parse import quote, urlencode, urlparse, urlunparse
+else:
+    from urllib import quote, urlencode
+    from urlparse import urlparse, urlunparse
+
+
 from grokcore.security.util import check_permission
 from zope.component import getMultiAdapter
 from zope.security.checker import NamesChecker, defineChecker
 from zope.contentprovider.interfaces import IContentProvider
 from zope.traversing.browser.absoluteurl import _safe as SAFE_URL_CHARACTERS
 from zope.traversing.browser.interfaces import IAbsoluteURL
-
-import directive
+from grokcore.view import directive
 
 ASIS = object()
 
@@ -30,11 +36,11 @@ ASIS = object()
 def url(request, obj, name=None, skin=ASIS, data=None):
     url = getMultiAdapter((obj, request), IAbsoluteURL)()
     if name is not None:
-        url += '/' + urllib.quote(name.encode('utf-8'), SAFE_URL_CHARACTERS)
+        url += '/' + quote(name.encode('utf-8'), SAFE_URL_CHARACTERS)
 
     if skin is not ASIS:
         # Remove whatever ``++skin++[name]`` is active.
-        parts = list(urlparse.urlparse(url))
+        parts = list(urlparse(url))
         path = parts[2]
         if path.startswith('/++skin++'):
             # Find next / in the path.
@@ -49,7 +55,7 @@ def url(request, obj, name=None, skin=ASIS, data=None):
                     directive.skin.bind().get(skin), path)
 
         parts[2] = path
-        url = urlparse.urlunparse(parts)
+        url = urlunparse(parts)
 
     if not data:
         return url
@@ -65,7 +71,7 @@ def url(request, obj, name=None, skin=ASIS, data=None):
                 isinstance(item, unicode) and item.encode('utf-8')
                 or item for item in v]
 
-    return url + '?' + urllib.urlencode(data, doseq=True)
+    return url + '?' + urlencode(data, doseq=True)
 
 
 def render_provider(context, request, view, name):
