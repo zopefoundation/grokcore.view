@@ -12,7 +12,7 @@ We should find the ``cavepainting`` view for a mammoth:
   >>> request = TestRequest()
   >>> from zope import component
   >>> view = component.getMultiAdapter((manfred, request), name='cavepainting')
-  >>> print view()
+  >>> print(view())
   A cave painting of a mammoth
 
   >>> view.context is manfred
@@ -24,7 +24,7 @@ We should find the ``cavepainting`` view for a mammoth:
 
   >>> real_view = component.getMultiAdapter(
   ...     (manfred, request), name='realcavepainting')
-  >>> print real_view()
+  >>> print(real_view())
   Real garden
 
 

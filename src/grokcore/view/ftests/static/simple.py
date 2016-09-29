@@ -11,7 +11,7 @@ zope.fanstatic) instead of the dummy implementation in this test:
   >>> from grokcore.view.ftests.static.simple_fixture.ellie import Mammoth
   >>> root[u'ellie'] = Mammoth()
   >>> browser.open('http://localhost/ellie')
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <a href="dummy:/file.txt">Some text in a file</a>

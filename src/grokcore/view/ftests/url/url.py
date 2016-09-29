@@ -14,13 +14,13 @@ The views in this test implement self.url():
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/herd/manfred/index")
-  >>> print browser.contents
+  >>> print(browser.contents)
   http://localhost/herd/manfred/index
   >>> browser.open("http://localhost/herd/manfred/another")
-  >>> print browser.contents
+  >>> print(browser.contents)
   http://localhost/herd/manfred/another
   >>> browser.open("http://localhost/herd/manfred/yetanother")
-  >>> print browser.contents
+  >>> print(browser.contents)
   http://localhost/herd/manfred/yetanother
 
 We get the views manually so we can do a greater variety of url() calls:
@@ -152,7 +152,7 @@ We also make sure the values in the list that are unicode instances are encoded
 properly:
 
   >>> result = index_view.url(data={'key':[u'\xe9',2]})
-  >>> print result
+  >>> print(result)
   http://127.0.0.1/herd/manfred/index?key=%C3%A9&key=2
 
   >>> from cgi import parse_qs

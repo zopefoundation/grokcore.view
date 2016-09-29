@@ -7,7 +7,7 @@ will automatically be picked up, reloading Zope is not necessary.
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
   >>> view = getMultiAdapter((Mammoth(), request), name='index')
-  >>> print view()
+  >>> print(view())
   before
 
 Now we change the file:
@@ -21,7 +21,7 @@ Now we change the file:
 
 and find that the output of the view has changed as well:
 
-  >>> print view()
+  >>> print(view())
   after
 
 At last, we should change everything back to normal:

@@ -9,21 +9,21 @@ A template can be used by multiple views at the same time:
   >>> from zope import component
 
   >>> view = component.getMultiAdapter((manfred, request), name='a')
-  >>> print view()
+  >>> print(view())
   View A
 
   >>> view = component.getMultiAdapter((manfred, request), name='b')
-  >>> print view()
+  >>> print(view())
   View A
 
 It also works if templates are both associated explicitly:
 
   >>> view = component.getMultiAdapter((manfred, request), name='c')
-  >>> print view()
+  >>> print(view())
   Template
 
   >>> view = component.getMultiAdapter((manfred, request), name='d')
-  >>> print view()
+  >>> print(view())
   Template
 
 Because the template is associated, we do not expect it to be

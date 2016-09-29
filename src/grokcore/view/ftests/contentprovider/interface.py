@@ -14,11 +14,11 @@ as it is associated with the view's interface::
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/cave")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Hi
 
   >>> browser.open("http://localhost/cave/@@secondindex")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Hi
 
 """

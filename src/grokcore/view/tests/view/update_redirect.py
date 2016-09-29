@@ -9,11 +9,11 @@ is not executed subsequently.
   >>> request = TestRequest()
   >>> from zope.component import getMultiAdapter
   >>> view = getMultiAdapter((manfred, request), name='cavepainting')
-  >>> print view()
+  >>> print(view())
   None
-  >>> print view.response.getStatus()
+  >>> print(view.response.getStatus())
   302
-  >>> print view.response.getHeader('Location')
+  >>> print(view.response.getHeader('Location'))
   somewhere-else
 
 """

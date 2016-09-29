@@ -7,7 +7,7 @@ The default view name for a model is 'index':
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/manfred")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <h1>Hello, world!</h1>

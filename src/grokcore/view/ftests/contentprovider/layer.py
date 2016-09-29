@@ -11,14 +11,14 @@ registered for the default layer::
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/wilma/@@caveview")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Soup pot
 
 Traverse to the view on the model object. We get the content provider
 registered for the "boneskin" layer::
 
   >>> browser.open("http://localhost/++skin++boneskin/wilma/@@caveview")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Layered pot
 
 """

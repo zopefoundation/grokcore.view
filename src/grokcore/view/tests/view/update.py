@@ -16,7 +16,7 @@ expressions can resolve paths:
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
   >>> view = component.getMultiAdapter((manfred, request), name='cavepainting')
-  >>> print view()
+  >>> print(view())
   <html>
   <body>
   <h1>red</h1>

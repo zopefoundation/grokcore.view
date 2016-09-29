@@ -10,22 +10,22 @@ Testing the plugging in of a template language
 
   # The inline template should work:
   >>> view = component.getMultiAdapter((cave, request), name='sebaayeni')
-  >>> print view()
+  >>> print(view())
   <html><body>Sebaayeni is in South Africa</body></html>
 
   # And the inline file template:
   >>> view = component.getMultiAdapter((cave, request), name='lascaux')
-  >>> print view()
+  >>> print(view())
   <html><body>Lascaux is in France</body></html>
 
   # And the template directory template:
   >>> view = component.getMultiAdapter((cave, request), name='kakadu')
-  >>> print view()
+  >>> print(view())
   <html><body>Kakadu is in Australia</body></html>
 
   # We should be able to extend the namespac in the view and
   >>> view = component.getMultiAdapter((cave, request), name='sierra')
-  >>> print view()
+  >>> print(view())
   <html><body>Sierra de San Fransisco is in Mexico</body></html>
 
 """

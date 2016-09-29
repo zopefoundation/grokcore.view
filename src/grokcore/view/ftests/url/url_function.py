@@ -17,10 +17,10 @@ Now let's use url on some things::
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/herd/manfred/index")
-  >>> print browser.contents
+  >>> print(browser.contents)
   http://localhost/herd/manfred/index
   >>> browser.open("http://localhost/herd/manfred/another")
-  >>> print browser.contents
+  >>> print(browser.contents)
   http://localhost/herd/manfred/another
 
 We get the views manually so we can do a greater variety of url() calls:
