@@ -23,7 +23,7 @@ expressions can resolve paths:
   <h1>red</h1>
   </body>
   </html>
-  
+
 
 """
 import grokcore.view as grok

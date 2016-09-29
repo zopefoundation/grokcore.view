@@ -21,7 +21,6 @@ else:
     from urllib import quote, urlencode
     from urlparse import urlparse, urlunparse
 
-
 from grokcore.security.util import check_permission
 from zope.component import getMultiAdapter
 from zope.security.checker import NamesChecker, defineChecker

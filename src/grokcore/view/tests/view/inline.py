@@ -3,7 +3,7 @@ Templates can be specified in the same module as the view,
 using a variable named `viewname_pt`:
 
   >>> grok.testing.grok(__name__)
-  
+
   >>> manfred = Mammoth()
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()

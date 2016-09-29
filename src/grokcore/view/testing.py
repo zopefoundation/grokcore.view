@@ -30,7 +30,7 @@ def grok(module_name):
     config.execute_actions()
 
 
-lastwarning = '' # Here we collect warnings.
+lastwarning = ''  # Here we collect warnings.
 
 
 def warn(message, category=None, stacklevel=1):

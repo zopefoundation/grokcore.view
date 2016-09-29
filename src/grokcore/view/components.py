@@ -216,10 +216,10 @@ class View(ViewSupport, BrowserPage):
 
     render.base_method = True
 
+
 # backwards compatibility. Probably not needed by many, but just in case.
 # please start using grokcore.view.View again.
 CodeView = View
-
 
 
 @interface.implementer(interfaces.ITemplate)
@@ -256,7 +256,7 @@ class ContentProvider(ContentProviderBase):
             self.request,
             interface.Interface,
             name=self.module_info.package_dotted_name,
-            )
+        )
 
     def default_namespace(self):
         namespace = {}
