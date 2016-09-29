@@ -4,12 +4,18 @@ import re
 import unittest
 from pkg_resources import resource_listdir
 
-from zope.app.wsgi.testlayer import BrowserLayer, http
+import zope.app.wsgi.testlayer
+import zope.testbrowser.wsgi
 from zope.testing import renormalizing
 import grokcore.view
 
 
-FunctionalLayer = BrowserLayer(grokcore.view)
+class Layer(
+    zope.testbrowser.wsgi.TestBrowserLayer,
+    zope.app.wsgi.testlayer.BrowserLayer):
+    pass
+
+layer = Layer(grokcore.view)
 
 
 checker = renormalizing.RENormalizing([
@@ -21,8 +27,8 @@ checker = renormalizing.RENormalizing([
 def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
     suite = unittest.TestSuite()
-    getRootFolder = FunctionalLayer.getRootFolder
-    globs = dict(http=http,
+    getRootFolder = layer.getRootFolder
+    globs = dict(http=zope.app.wsgi.testlayer.http,
                  getRootFolder=getRootFolder)
     optionflags = (
         doctest.ELLIPSIS +
@@ -41,13 +47,13 @@ def suiteFromPackage(name):
                 checker=checker,
                 extraglobs=globs,
                 optionflags=optionflags)
-            test.layer = FunctionalLayer
+            test.layer = layer
         elif filename.endswith('.txt'):
             test = doctest.DocFileSuite(
                 os.path.join(name, filename),
                 optionflags=optionflags,
                 globs=globs)
-            test.layer = FunctionalLayer
+            test.layer = layer
         if test is not None:
             suite.addTest(test)
     return suite
