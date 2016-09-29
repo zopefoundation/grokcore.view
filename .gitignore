@@ -1,9 +1,11 @@
 *.pyc
-__pycache__
-src/*.egg-info
-
+*.swp
+.coverage
+.coverage.*
 .installed.cfg
+__pycache__
 bin
 develop-eggs
+htmlcov
 parts
-*.swp
+src/*.egg-info
