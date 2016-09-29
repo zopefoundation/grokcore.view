@@ -39,6 +39,7 @@ tests_require = [
     'zope.principalregistry',
     'zope.securitypolicy',
     'zope.site',
+    'zope.testbrowser',
     'zope.testing',
     ]
 
