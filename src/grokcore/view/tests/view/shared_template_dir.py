@@ -7,7 +7,7 @@ When modules share a template directory, templates that have not been associated
   >>> saved_warn = warnings.warn
   >>> warnings.warn = warn
 
-  >>> import shared_template_fixture 
+  >>> from grokcore.view.tests.view import shared_template_fixture
 
   >>> grok.testing.grok(shared_template_fixture.__name__)
   From grok.testing's warn():
