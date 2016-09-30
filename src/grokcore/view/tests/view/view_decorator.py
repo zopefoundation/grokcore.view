@@ -4,7 +4,10 @@ Using the @grok.require decorator in a view class is not allowed.
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
-  GrokError: The @grok.require decorator is used for method 'render' in view <class 'grokcore.view.tests.view.view_decorator.BogusView'>. It may only be used for XML-RPC methods.
+  martian.error.GrokError: The @grok.require decorator is used for
+  method 'render' in view
+  <class 'grokcore.view.tests.view.view_decorator.BogusView'>.
+  It may only be used for XML-RPC methods.
 
 
 """

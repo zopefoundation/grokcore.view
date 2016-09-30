@@ -122,14 +122,16 @@ a TemplateLookupError::
   >>> reg.lookup(nonexistent_module_info, 'foo')
   Traceback (most recent call last):
     ...
-  TemplateLookupError: template 'foo' in '...' cannot be found
+  grokcore.view.interfaces.TemplateLookupError:
+  template 'foo' in '...' cannot be found
 
 We get this error for templates that do not exist as well::
 
   >>> reg.lookup(module_info, 'doesntexist')
   Traceback (most recent call last):
     ...
-  TemplateLookupError: template 'doesntexist' in ... cannot be found
+  grokcore.view.interfaces.TemplateLookupError:
+  template 'doesntexist' in ... cannot be found
 
 Since no templates have yet been associated, retrieving the unassociated
 templates will get us all registered templates::
@@ -193,7 +195,8 @@ This file will not be loaded as a template::
   >>> reg.lookup(module_info2, 'foo.unknown')
   Traceback (most recent call last):
     ...
-  TemplateLookupError: template 'foo.unknown' in '...' cannot be found
+  grokcore.view.interfaces.TemplateLookupError:
+  template 'foo.unknown' in '...' cannot be found
 
 Multiple templates with the same name
 -------------------------------------
@@ -222,7 +225,8 @@ We expect an error when we register this directory::
   >>> register_directory(module_info3)
   Traceback (most recent call last):
     ...
-  GrokError: Conflicting templates found for name 'foo' in directory '...':
+  martian.error.GrokError:
+  Conflicting templates found for name 'foo' in directory '...':
   multiple templates with the same name and different extensions.
 
 Inline templates
@@ -257,7 +261,8 @@ If we cannot find the template we get an error::
   >>> inline_reg.lookup(module_info4, 'unknown')
   Traceback (most recent call last):
     ...
-  TemplateLookupError: inline template 'unknown' in 'module4' cannot be found
+  grokcore.view.interfaces.TemplateLookupError:
+  inline template 'unknown' in 'module4' cannot be found
 
 Since no templates have yet been associated, retrieving the
 unassociated templates will get us all registered inline templates::
@@ -314,7 +319,8 @@ missing on the filesystem)::
   >>> lookup(lookuptest_info, 'qux')
   Traceback (most recent call last):
     ...
-  TemplateLookupError: template 'qux' in '...' cannot be found
+  grokcore.view.interfaces.TemplateLookupError:
+  template 'qux' in '...' cannot be found
 
 The file template and the inline template are unassociated::
 
@@ -362,7 +368,8 @@ We now also try to register an inline template with the same name
   >>> register_inline_template(module_info5, 'foo', InlineTemplate('foo'))
   Traceback (most recent call last):
      ...
-  GrokError: Conflicting templates found for name 'foo': the inline template
+  martian.error.GrokError: Conflicting templates found for name 'foo':
+  the inline template
   in module 'module5' conflicts with the file template in directory
   '...module5_templates'
 
@@ -390,7 +397,7 @@ get an error::
    >>> register_directory(module_info6)
    Traceback (most recent call last):
      ...
-   GrokError: Conflicting templates found for name 'bar':
+   martian.error.GrokError: Conflicting templates found for name 'bar':
    the inline template in module 'module6' conflicts with the file template in directory '...'
 
 

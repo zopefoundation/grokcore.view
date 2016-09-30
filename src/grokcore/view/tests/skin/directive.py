@@ -32,7 +32,8 @@ Note that the directive only supports text (ASCII string or unicode):
   >>> from grokcore.view.tests.skin import directive_textonly_fixture
   Traceback (most recent call last):
     ...
-  GrokImportError: The 'skin' directive can only be called with unicode or ASCII.
+  martian.error.GrokImportError: The 'skin' directive can only be called with
+  unicode or ASCII.
 
 In certain cases we need to set a value on a component as if the directive
 was actually used::

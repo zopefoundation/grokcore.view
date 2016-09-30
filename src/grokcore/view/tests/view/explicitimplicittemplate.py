@@ -6,12 +6,13 @@ template using grok.template.  Therefore there is an error:
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
-  ConfigurationExecutionError: martian.error.GrokError: Multiple possible templates for view
+  zope.configuration.config.ConfigurationExecutionError:
+  martian.error.GrokError: Multiple possible templates for view
   <class 'grokcore.view.tests.view.explicitimplicittemplate.Painting'>.
   It uses grok.template('cavepainting'), but there is also a template
   called 'painting'.
   in:
-  
+
 """
 import grokcore.view as grok
 

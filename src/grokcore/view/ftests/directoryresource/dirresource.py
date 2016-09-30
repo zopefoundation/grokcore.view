@@ -37,7 +37,7 @@ This resource is only available on the particular layer::
   ...     'anotherfile.txt')
   Traceback (most recent call last):
   ...
-  HTTPError: HTTP Error 404: Not Found
+  urllib.error.HTTPError: HTTP Error 404: Not Found
 
 Directoryresources can be registered under an explicit name::
 

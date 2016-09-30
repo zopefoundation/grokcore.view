@@ -4,7 +4,7 @@ Templates with ambiguous context cannot be grokked:
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
-  GrokError: Multiple possible contexts for
+  martian.error.GrokError: Multiple possible contexts for
   <class 'grokcore.view.tests.view.ambiguouscontext.Club'>, please use the
   'context' directive.
 

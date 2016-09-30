@@ -23,7 +23,7 @@ However, the boneview does not have a content provider registered for:
   >>> browser.open("http://localhost/fred/@@boneview")
   Traceback (most recent call last):
   ...
-  ContentProviderLookupError: cave
+  zope.contentprovider.interfaces.ContentProviderLookupError: cave
 
 And the potview again does, by way of a component-level grok.view directive:
 
