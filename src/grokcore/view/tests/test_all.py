@@ -10,7 +10,11 @@ import zope.component.eventtesting
 import grokcore.view
 from grokcore.view.templatereg import file_template_registry
 
-optionflags = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
+optionflags = (
+    doctest.NORMALIZE_WHITESPACE +
+    doctest.ELLIPSIS +
+    renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2
+)
 
 
 def setUp(test):

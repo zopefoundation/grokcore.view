@@ -31,6 +31,7 @@ def suiteFromPackage(name):
     globs = dict(http=zope.app.wsgi.testlayer.http,
                  getRootFolder=getRootFolder)
     optionflags = (
+        renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +
         doctest.ELLIPSIS +
         doctest.NORMALIZE_WHITESPACE +
         doctest.REPORT_NDIFF)
