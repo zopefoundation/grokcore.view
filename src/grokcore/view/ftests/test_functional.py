@@ -1,4 +1,5 @@
 import doctest
+import grok.testing
 import os.path
 import re
 import unittest
@@ -31,6 +32,7 @@ def suiteFromPackage(name):
     globs = dict(http=zope.app.wsgi.testlayer.http,
                  getRootFolder=getRootFolder,
                  wsgi_app=layer.make_wsgi_app,
+                 bprint=grok.testing.bprint,
                  )
     optionflags = (
         renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +

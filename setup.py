@@ -30,6 +30,7 @@ install_requires = [
     ]
 
 tests_require = [
+    'grok',
     'zope.app.appsetup',
     'zope.app.publication',
     'zope.app.wsgi',
