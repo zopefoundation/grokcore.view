@@ -10,7 +10,7 @@ Set up the model object to view::
 Viewing the cave object should result in the content provider being displayed,
 as it is associated with the view's interface::
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/cave")

@@ -2,7 +2,7 @@
 Viewing a protected view with insufficient privileges will yield
 Unauthorized:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.open("http://localhost/@@painting")
   Traceback (most recent call last):

@@ -7,7 +7,7 @@ Content providers can be discriminated based on layer too::
 Traverse to the view on the model object. We get the content provider
 registered for the default layer::
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/wilma/@@caveview")

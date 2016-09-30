@@ -8,7 +8,7 @@ Set up a content object in the application root:
 
   >>> root = getRootFolder()
   >>> root['fred'] = Fred()
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
 

@@ -4,7 +4,7 @@ to resources.
 In the context of a grok application, you can use fanstatic (through
 zope.fanstatic) instead of the dummy implementation in this test:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> root = getRootFolder()

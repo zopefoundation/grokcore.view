@@ -8,7 +8,7 @@ provider is registered for, not the provider itself.
 
 Let's look at the first template, which includes the content provider:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/cave/@@index")

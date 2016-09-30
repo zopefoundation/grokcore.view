@@ -10,7 +10,7 @@ Views have a method that can be used to construct URLs:
 
 The views in this test implement self.url():
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/herd/manfred/index")
