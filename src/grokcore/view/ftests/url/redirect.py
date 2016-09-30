@@ -13,7 +13,8 @@ point to mammoth:
   >>> browser.url
   'http://localhost/manfred/another'
 
-  >>> response = http('GET /manfred/trustedredirect HTTP/1.0')
+  >>> response = http(wsgi_app(),
+  ...     b'GET /manfred/trustedredirect HTTP/1.0')
   >>> response.getStatus()
   302
   >>> response.getHeader('location')

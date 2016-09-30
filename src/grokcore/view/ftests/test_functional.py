@@ -11,8 +11,8 @@ import grokcore.view
 
 
 class Layer(
-    zope.testbrowser.wsgi.TestBrowserLayer,
-    zope.app.wsgi.testlayer.BrowserLayer):
+        zope.testbrowser.wsgi.TestBrowserLayer,
+        zope.app.wsgi.testlayer.BrowserLayer):
     pass
 
 layer = Layer(grokcore.view)
@@ -29,7 +29,9 @@ def suiteFromPackage(name):
     suite = unittest.TestSuite()
     getRootFolder = layer.getRootFolder
     globs = dict(http=zope.app.wsgi.testlayer.http,
-                 getRootFolder=getRootFolder)
+                 getRootFolder=getRootFolder,
+                 wsgi_app=layer.make_wsgi_app,
+                 )
     optionflags = (
         renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +
         doctest.ELLIPSIS +
