@@ -16,7 +16,7 @@ Now we change the file:
   >>> here = os.path.dirname(__file__)
   >>> template_file = os.path.join(here, 'templatereload_templates', 'index.pt')
   >>> template = open(template_file, 'w')
-  >>> template.write('after')
+  >>> dummy = template.write('after')
   >>> template.close()
 
 and find that the output of the view has changed as well:
@@ -27,7 +27,7 @@ and find that the output of the view has changed as well:
 At last, we should change everything back to normal:
 
   >>> template = open(template_file, 'w')
-  >>> template.write('before')
+  >>> dummy = template.write('before')
   >>> template.close()
 """
 import grokcore.view as grok

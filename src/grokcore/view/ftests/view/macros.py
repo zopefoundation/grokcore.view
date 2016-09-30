@@ -54,7 +54,7 @@ applies to macros::
   >>> template_file = os.path.join(here, 'macros_templates', 'layout.pt')
   >>> before = open(template_file, 'r').read()
   >>> changed = before.replace('GROK', 'GROK RELOADED')
-  >>> open(template_file, 'w').write(changed)
+  >>> dummy = open(template_file, 'w').write(changed)
   >>> browser.open("http://localhost/manfred/@@painting")
   >>> print(browser.contents)
   <html>
@@ -68,7 +68,7 @@ applies to macros::
 
 Restore situation::
 
-  >>> open(template_file, 'w').write(before)
+  >>> dummy = open(template_file, 'w').write(before)
 
 
 

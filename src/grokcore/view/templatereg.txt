@@ -92,10 +92,10 @@ We create a directory with two templates in it::
 
   >>> module_info, template_dir = create_module_info_with_templates('fake')
   >>> f = open(os.path.join(template_dir, 'foo.template'), 'w')
-  >>> f.write('foo')
+  >>> dummy = f.write('foo')
   >>> f.close()
   >>> f = open(os.path.join(template_dir, 'bar.template'), 'w')
-  >>> f.write('bar')
+  >>> dummy = f.write('bar')
   >>> f.close()
 
 We can now register the filesystem templates associated with our
@@ -165,7 +165,7 @@ the system::
   >>> import os, tempfile
   >>> module_info2, template_dir2 = create_module_info_with_templates('module2')
   >>> f = open(os.path.join(template_dir2, 'foo.unknown'), 'w')
-  >>> f.write('unknown')
+  >>> dummy = f.write('unknown')
   >>> f.close()
 
 We will now start recording all the warnings, as we will get one about the
@@ -210,10 +210,10 @@ Grok won't know which one it should use::
 
   >>> module_info3, template_dir3 = create_module_info_with_templates('module3')
   >>> f = open(os.path.join(template_dir3, 'foo.1'), 'w')
-  >>> f.write('1')
+  >>> dummy = f.write('1')
   >>> f.close()
   >>> f = open(os.path.join(template_dir3, 'foo.2'), 'w')
-  >>> f.write('2')
+  >>> dummy = f.write('2')
   >>> f.close()
 
 We expect an error when we register this directory::
@@ -292,7 +292,7 @@ both filesystem templates as well as inline templates.
 
   >>> lookuptest_info, lookuptest_template_dir = create_module_info_with_templates('lookuptest')
   >>> f = open(os.path.join(lookuptest_template_dir, 'foo.template'), 'w')
-  >>> f.write('foo')
+  >>> dummy = f.write('foo')
   >>> f.close()
   >>> register_directory(lookuptest_info)
 
@@ -348,7 +348,7 @@ We construct a fake templates directory that's associated with the fictional
 We create a template with the name ``foo`` in it::
 
   >>> f = open(os.path.join(template_dir5, 'foo.template'), 'w')
-  >>> f.write('foo')
+  >>> dummy = f.write('foo')
   >>> f.close()
 
 We register this directory, using the global registration functionality::
@@ -375,7 +375,7 @@ First we set up a fictional filesystem structure surrounding a
 We add a template to it::
 
   >>> f = open(os.path.join(template_dir6, 'bar.template'), 'w')
-  >>> f.write('bar')
+  >>> dummy = f.write('bar')
   >>> f.close()
 
 Now we first register an inline template ``bar`` before loading up that
