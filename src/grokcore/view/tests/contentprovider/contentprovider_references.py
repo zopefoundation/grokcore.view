@@ -19,14 +19,14 @@ registered for::
   >>> provider.request is request
   True
 
-  >>> provider.render()
-  u'I provide some content for a view'
+  >>> print(provider.render())
+  I provide some content for a view
 
 You can use the helper method render_provider to directly find and
 render it:
 
-  >>> grok.render_provider(ctxt, request, view, 'a_content_provider')
-  u'I provide some content for a view'
+  >>> print(grok.render_provider(ctxt, request, view, 'a_content_provider'))
+  I provide some content for a view
 
 """
 
