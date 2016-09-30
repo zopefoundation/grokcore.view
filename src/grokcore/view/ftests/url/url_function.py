@@ -4,6 +4,7 @@ There is a url function that can be imported from grok to determine the
 absolute URL of objects.
 
   >>> from grokcore.view import url
+  >>> import six  # for Python 3 compatibility
 
   >>> from zope.site.folder import Folder
   >>> herd = Folder()
@@ -54,12 +55,23 @@ particular view on the object:
 
 It works properly in the face of non-ascii characters in URLs:
 
-  >>> u = url(request, herd, unicode('árgh', 'UTF-8'))
+  >>> last_path = 'árgh'
+  >>> if six.PY2:
+  ...     last_path = six.text_type(last_path, 'UTF-8')
+  >>> u = url(request, herd, last_path)
   >>> u
   'http://127.0.0.1/herd/%C3%A1rgh'
-  >>> import urllib
-  >>> expected = unicode('http://127.0.0.1/herd/árgh', 'UTF-8')
-  >>> urllib.unquote(u).decode('utf-8') == expected
+  >>> if six.PY2:
+  ...     from urllib import unquote
+  ... else:
+  ...     from urllib.parse import unquote
+  >>> expected = 'http://127.0.0.1/herd/árgh'
+  >>> if six.PY2:
+  ...     expected = six.text_type('http://127.0.0.1/herd/árgh', 'UTF-8')
+  >>> u_unquoted = unquote(u)
+  >>> if six.PY2:
+  ...   u_unquoted = u_unquoted.decode('utf-8')
+  >>> u_unquoted == expected
   True
 
 The url() function supports a data argument which is converted to a

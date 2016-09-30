@@ -13,6 +13,7 @@
 ##############################################################################
 """Grok components"""
 
+import six
 import sys
 import os
 import warnings
@@ -105,7 +106,7 @@ class ViewSupport(object):
         the URL as a CGI query string.
 
         """
-        if isinstance(obj, basestring):
+        if isinstance(obj, six.string_types):
             if name is not None:
                 raise TypeError(
                     'url() takes either obj argument, obj, string arguments, '

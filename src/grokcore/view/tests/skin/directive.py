@@ -42,7 +42,7 @@ was actually used::
   >>> class IFoo(interface.Interface):
   ...     pass
   >>> grok.skin.set(IFoo, u'value as set')
-  >>> grok.skin.bind().get(IFoo)
-  u'value as set'
+  >>> print(grok.skin.bind().get(IFoo))
+  value as set
 
 """
