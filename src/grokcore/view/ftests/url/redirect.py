@@ -24,7 +24,7 @@ point to mammoth:
   >>> browser.open('http://localhost/manfred/redirectwithstatus')
   Traceback (most recent call last):
   ...
-  HTTPError: HTTP Error 418: Unknown
+  urllib.error.HTTPError: HTTP Error 418: Unknown
   >>> browser.url
   'http://localhost/manfred/redirectwithstatus'
 
