@@ -77,5 +77,8 @@ def test_suite():
         optionflags=optionflags,
         setUp=setUp,
         tearDown=cleanUp,
+        # `checker` is not an officially supported options but it will be
+        # forwarded as **kw to the DocTestCase.
+        checker=checker,
         ))
     return suite

@@ -123,12 +123,12 @@ Some combinations of arguments just don't make sense:
   >>> another_view.url('foo', 'bar')
   Traceback (most recent call last):
     ...
-  TypeError: url() takes either obj argument, obj, string arguments, or string
+  TypeError: url() takes either obj argument, obj, string arguments, or string\
   argument
   >>> another_view.url('foo', herd)
   Traceback (most recent call last):
     ...
-  TypeError: url() takes either obj argument, obj, string arguments, or string
+  TypeError: url() takes either obj argument, obj, string arguments, or string\
   argument
   >>> another_view.url(herd, 'bar', data='baz')
   Traceback (most recent call last):

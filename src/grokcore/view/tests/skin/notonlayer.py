@@ -5,10 +5,10 @@ registered as a skin:
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
-  martian.error.GrokError: The grok.skin() directive is used on interface
-  'grokcore.view.tests.skin.notonlayer.NotALayer'. However,
-  'grokcore.view.tests.skin.notonlayer.NotALayer' does not extend
-  IRequest which is required for interfaces that are used as
+  martian.error.GrokError: The grok.skin() directive is used on interface\
+  'grokcore.view.tests.skin.notonlayer.NotALayer'. However,\
+  'grokcore.view.tests.skin.notonlayer.NotALayer' does not extend\
+  IRequest which is required for interfaces that are used as\
   layers and are to be registered as a skin.
 """
 import grokcore.view as grok
