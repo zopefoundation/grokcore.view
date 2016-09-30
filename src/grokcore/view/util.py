@@ -13,6 +13,7 @@
 ##############################################################################
 """Grok utility functions.
 """
+import six
 import sys
 PY3 = sys.version_info > (3,)
 if PY3:
@@ -47,7 +48,7 @@ def url(request, obj, name=None, skin=ASIS, data=None):
             path = path[idx:]
         if skin is not None:
             # If a skin is set, add ``++skin++`` as the leading path segment.
-            if isinstance(skin, basestring):
+            if isinstance(skin, six.string_types):
                 path = '/++skin++%s%s' % (skin, path)
             else:
                 path = '/++skin++%s%s' % (
@@ -63,11 +64,11 @@ def url(request, obj, name=None, skin=ASIS, data=None):
         raise TypeError('url() data argument must be a dict.')
 
     for k, v in data.items():
-        if isinstance(v, unicode):
+        if isinstance(v, six.text_type):
             data[k] = v.encode('utf-8')
         if isinstance(v, (list, set, tuple)):
             data[k] = [
-                isinstance(item, unicode) and item.encode('utf-8')
+                isinstance(item, six.text_type) and item.encode('utf-8')
                 or item for item in v]
 
     return url + '?' + urlencode(data, doseq=True)

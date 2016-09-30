@@ -16,6 +16,7 @@ install_requires = [
     'grokcore.security >= 1.5',
     'martian >= 0.13',
     'setuptools',
+    'six',
     'zope.browserpage',
     'zope.browserresource >= 3.9.0',
     'zope.component',
