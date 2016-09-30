@@ -33,9 +33,9 @@ Our templates are ``.template``, so we need to register a
 appropriate templates::
 
   >>> from grokcore.view.interfaces import ITemplateFileFactory, ITemplate
-  >>> from zope.interface import implements
-  >>> class TestTemplate(object):
-  ...    implements(ITemplate) # we lie for testing purposes
+  >>> from zope.interface import implementer
+  >>> @implementer(ITemplate) # we lie for testing purposes
+  ... class TestTemplate(object):
   ...    def __init__(self, filename, source):
   ...        self.filename = filename
   ...        self.source = source
@@ -48,8 +48,9 @@ appropriate templates::
   ...    def _annotateGrokInfo(self, template_name, template_path):
   ...        pass # XXX why do we need to implement this?
 
-  >>> class TestTemplateFactory(object):
-  ...    implements(ITemplateFileFactory)
+  >>> @implementer(ITemplateFileFactory) # we lie for testing purposes
+  ... class TestTemplateFactory(object):
+  ...    implementer(ITemplateFileFactory)
   ...    def __call__(self, filename, _prefix=None):
   ...        f = open(os.path.join(_prefix, filename), 'r')
   ...        data = f.read()

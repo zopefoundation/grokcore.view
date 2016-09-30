@@ -26,9 +26,9 @@ from zope.traversing.interfaces import ITraversable
 from zope.traversing.browser.interfaces import IAbsoluteURL
 
 
+@zope.interface.implementer(ITraversable, IAbsoluteURL)
 class DummyResource(object):
     """ Dummy resource implementation. """
-    zope.interface.implements(ITraversable, IAbsoluteURL)
 
     def __init__(self, request, name=''):
         self.request = request
