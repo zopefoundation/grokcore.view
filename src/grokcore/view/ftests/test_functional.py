@@ -16,7 +16,7 @@ class Layer(
         zope.app.wsgi.testlayer.BrowserLayer):
     pass
 
-layer = Layer(grokcore.view)
+layer = Layer(grokcore.view, allowTearDown=True)
 
 
 checker = renormalizing.RENormalizing([
