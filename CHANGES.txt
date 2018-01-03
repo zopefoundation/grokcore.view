@@ -1,8 +1,8 @@
 Changes
 =======
 
-3.0 (unreleased)
------------------
+3.0 (2018-01-03)
+----------------
 
 - In the template directory grokker, ignore directories and files
   without extensions.
