@@ -16,4 +16,5 @@ When modules share a template directory, templates that have not been associated
   ...UserWarning: Found the following unassociated template after configuration:
   ...shared_template_fixture...templates...unassociated.pt...
 
+  >>> warnings.warn = saved_warn
 """
