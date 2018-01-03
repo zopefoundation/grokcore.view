@@ -13,6 +13,7 @@
 ##############################################################################
 """Grok test helpers
 """
+from __future__ import print_function
 import sys
 import grokcore.view
 from zope.configuration.config import ConfigurationMachine
@@ -29,7 +30,7 @@ def grok(module_name):
     config.execute_actions()
 
 
-lastwarning = '' # Here we collect warnings.
+lastwarning = ''  # Here we collect warnings.
 
 
 def warn(message, category=None, stacklevel=1):
@@ -42,7 +43,7 @@ def warn(message, category=None, stacklevel=1):
 
     When zope.deprecation is fixed, this warn function can be removed again.
     """
-    print "From grok.testing's warn():"
+    print("From grok.testing's warn():")
 
     frame = sys._getframe(stacklevel)
     path = frame.f_globals['__file__']
@@ -62,4 +63,4 @@ def warn(message, category=None, stacklevel=1):
         line.strip(),
         )
     grokcore.view.testing.lastwarning += warning
-    print warning
+    print(warning)

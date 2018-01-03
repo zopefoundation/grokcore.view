@@ -1,11 +1,11 @@
 """
   >>> getRootFolder()["manfred"] = Mammoth()
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/++skin++casual/manfred/@@hello")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <h1>Hi sir !</h1>
@@ -13,11 +13,11 @@
   </html>
 
   >>> browser.open("http://localhost/++skin++party/manfred/@@happy")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Hee yay !
 
   >>> browser.open("http://localhost/++skin++rainy/manfred/@@sad")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Aw... It rains.
 
 """

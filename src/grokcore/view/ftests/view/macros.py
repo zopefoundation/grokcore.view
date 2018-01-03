@@ -1,11 +1,11 @@
 """
   >>> getRootFolder()["manfred"] = Mammoth()
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/manfred/@@painting")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <h1>GROK MACRO!</h1>
@@ -25,7 +25,7 @@ If the view has an attribute with the same name as a macro, the macro
 shadows the view. XXX This should probably generate a warning at runtime.
 
   >>> browser.open("http://localhost/manfred/@@grilldish")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   Curry
   </html>
@@ -54,9 +54,9 @@ applies to macros::
   >>> template_file = os.path.join(here, 'macros_templates', 'layout.pt')
   >>> before = open(template_file, 'r').read()
   >>> changed = before.replace('GROK', 'GROK RELOADED')
-  >>> open(template_file, 'w').write(changed)
+  >>> dummy = open(template_file, 'w').write(changed)
   >>> browser.open("http://localhost/manfred/@@painting")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <h1>GROK RELOADED MACRO!</h1>
@@ -68,7 +68,7 @@ applies to macros::
 
 Restore situation::
 
-  >>> open(template_file, 'w').write(before)
+  >>> dummy = open(template_file, 'w').write(before)
 
 
 

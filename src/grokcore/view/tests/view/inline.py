@@ -3,13 +3,13 @@ Templates can be specified in the same module as the view,
 using a variable named `viewname_pt`:
 
   >>> grok.testing.grok(__name__)
-  
+
   >>> manfred = Mammoth()
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
   >>> from zope import component
   >>> view = component.getMultiAdapter((manfred, request), name='cavepainting')
-  >>> print view()
+  >>> print(view())
   <html>
   <body>
   <h1>Mammoth Cave Painting</h1>
@@ -30,7 +30,7 @@ Finding a template does not depend on the view name, but on the class
 name:
 
   >>> view = component.getMultiAdapter((manfred, request), name='hunting')
-  >>> print view()
+  >>> print(view())
   <html><body><h1>GROK HUNT MAMMOTH!</h1></body></html>
 
 """

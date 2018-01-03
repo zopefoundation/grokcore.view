@@ -10,20 +10,20 @@ Set up the model object to view::
 Viewing the cave object should result in the content provider being displayed,
 as it is associated with the view's interface::
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/cave")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Hi
 
   >>> browser.open("http://localhost/cave/@@secondindex")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Hi
 
 """
 
-from zope.interface import Interface
+from zope.interface import Interface, implementer
 import grokcore.view as grok
 
 class Cave(grok.Context):
@@ -32,8 +32,9 @@ class Cave(grok.Context):
 class ICavemenView(Interface):
     pass
 
+@implementer(ICavemenView)
 class Index(grok.View):
-    grok.implements(ICavemenView)
+    pass
 
 class CavemenContentProvider(grok.ContentProvider):
     grok.name('manage.cavemen')
@@ -42,8 +43,8 @@ class CavemenContentProvider(grok.ContentProvider):
     def render(self):
         return u'Hi'
 
+@implementer(ICavemenView)
 class SecondIndex(grok.View):
-    grok.implements(ICavemenView)
 
     def render(self):
         return u'Hi'

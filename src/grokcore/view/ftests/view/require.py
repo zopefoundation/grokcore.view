@@ -2,25 +2,25 @@
 Viewing a protected view with insufficient privileges will yield
 Unauthorized:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.open("http://localhost/@@painting")
   Traceback (most recent call last):
-  HTTPError: HTTP Error 401: Unauthorized
+  urllib.error.HTTPError: HTTP Error 401: Unauthorized
 
 When we log in (e.g. as a manager), we can access the view just fine:
 
   >>> browser.addHeader('Authorization', 'Basic mgr:mgrpw')
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/@@painting")
-  >>> print browser.contents
+  >>> print(browser.contents)
   What a beautiful painting.
 
 A view protected with 'zope.Public' is always accessible:
 
   >>> browser = Browser()
   >>> browser.open("http://localhost/@@publicnudity")
-  >>> print browser.contents
+  >>> print(browser.contents)
   Everybody can see this.
 """
 

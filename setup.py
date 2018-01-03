@@ -13,9 +13,10 @@ long_description = (
 
 install_requires = [
     'grokcore.component >= 2.5',
-    'grokcore.security >= 1.5',
+    'grokcore.security',
     'martian >= 0.13',
     'setuptools',
+    'six',
     'zope.browserpage',
     'zope.browserresource >= 3.9.0',
     'zope.component',
@@ -29,9 +30,10 @@ install_requires = [
     ]
 
 tests_require = [
+    'grok',
     'zope.app.appsetup',
     'zope.app.publication',
-    'zope.app.wsgi',
+    'zope.app.wsgi[test]',
     'zope.configuration',
     'zope.container',
     'zope.login',
@@ -39,6 +41,7 @@ tests_require = [
     'zope.principalregistry',
     'zope.securitypolicy',
     'zope.site',
+    'zope.testbrowser',
     'zope.testing',
     ]
 
@@ -48,7 +51,7 @@ publication_require = [
 
 setup(
     name='grokcore.view',
-    version='2.11.dev0',
+    version='3.0.dev0',
     author='Grok Team',
     author_email='grok-dev@zope.org',
     url='http://grok.zope.org',
@@ -60,6 +63,14 @@ setup(
                  'Intended Audience :: Developers',
                  'License :: OSI Approved :: Zope Public License',
                  'Programming Language :: Python',
+                 'Programming Language :: Python :: 2',
+                 'Programming Language :: Python :: 2.7',
+                 'Programming Language :: Python :: 3',
+                 'Programming Language :: Python :: 3.4',
+                 'Programming Language :: Python :: 3.5',
+                 'Programming Language :: Python :: 3.6',
+                 'Programming Language :: Python :: Implementation',
+                 'Programming Language :: Python :: Implementation :: CPython',
                  'Framework :: Zope3',
                  ],
 

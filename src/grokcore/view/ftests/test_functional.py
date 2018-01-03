@@ -1,15 +1,22 @@
 import doctest
+import grok.testing
 import os.path
 import re
 import unittest
 from pkg_resources import resource_listdir
 
-from zope.app.wsgi.testlayer import BrowserLayer, http
+import zope.app.wsgi.testlayer
+import zope.testbrowser.wsgi
 from zope.testing import renormalizing
 import grokcore.view
 
 
-FunctionalLayer = BrowserLayer(grokcore.view)
+class Layer(
+        zope.testbrowser.wsgi.TestBrowserLayer,
+        zope.app.wsgi.testlayer.BrowserLayer):
+    pass
+
+layer = Layer(grokcore.view, allowTearDown=True)
 
 
 checker = renormalizing.RENormalizing([
@@ -21,13 +28,19 @@ checker = renormalizing.RENormalizing([
 def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
     suite = unittest.TestSuite()
-    getRootFolder = FunctionalLayer.getRootFolder
-    globs = dict(http=http,
-                 getRootFolder=getRootFolder)
+    getRootFolder = layer.getRootFolder
+    globs = dict(
+        bprint=grok.testing.bprint,
+        getRootFolder=getRootFolder,
+        http=zope.app.wsgi.testlayer.http,
+        wsgi_app=layer.make_wsgi_app
+        )
     optionflags = (
+        renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +
         doctest.ELLIPSIS +
         doctest.NORMALIZE_WHITESPACE +
-        doctest.REPORT_NDIFF)
+        doctest.REPORT_NDIFF
+        )
 
     for filename in files:
         if filename == '__init__.py':
@@ -41,13 +54,13 @@ def suiteFromPackage(name):
                 checker=checker,
                 extraglobs=globs,
                 optionflags=optionflags)
-            test.layer = FunctionalLayer
+            test.layer = layer
         elif filename.endswith('.txt'):
             test = doctest.DocFileSuite(
                 os.path.join(name, filename),
                 optionflags=optionflags,
                 globs=globs)
-            test.layer = FunctionalLayer
+            test.layer = layer
         if test is not None:
             suite.addTest(test)
     return suite

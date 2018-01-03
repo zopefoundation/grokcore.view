@@ -1,12 +1,15 @@
 Changes
 =======
 
-2.11 (unreleased)
+3.0 (unreleased)
 -----------------
 
 - In the template directory grokker, ignore directories and files
   without extensions.
 
+- Drop support of Python 2.6.
+
+- Claim support for Python 3.4, 3.5, and 3.6.
 
 2.10.2 (2016-02-02)
 -------------------

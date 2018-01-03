@@ -3,9 +3,10 @@
   >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
-  ConfigurationExecutionError: martian.error.GrokError: Multiple possible ways to render view
-  <class 'grokcore.view.tests.view.eitherviewtemplateequalorrender.CavePainting'>.
-  It has both a 'render' method as well as an associated template.
+  zope.configuration.config.ConfigurationExecutionError:\
+  martian.error.GrokError: Multiple possible ways to render view <class\
+  'grokcore.view.tests.view.eitherviewtemplateequalorrender.CavePainting'>.\
+  It has both a 'render' method as well as an associated template.\
   in:
 
 """

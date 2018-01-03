@@ -16,14 +16,14 @@ expressions can resolve paths:
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
   >>> view = component.getMultiAdapter((manfred, request), name='cavepainting')
-  >>> print view()
+  >>> print(view())
   <html>
   <body>
   <h1>red</h1>
   <h1>red</h1>
   </body>
   </html>
-  
+
 
 """
 import grokcore.view as grok

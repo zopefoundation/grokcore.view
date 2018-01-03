@@ -8,7 +8,7 @@
   >>> from zope.component import getMultiAdapter
 
   >>> view = getMultiAdapter((cave, request), name='piepmatz')
-  >>> print view()
+  >>> print(view())
   <p>Piep! Piep!</p>
 
 """

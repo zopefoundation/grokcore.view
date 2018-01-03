@@ -10,7 +10,7 @@ View with an associated PageTemplate that is referred to using
   >>> request = TestRequest()
   >>> from zope import component
   >>> view = component.getMultiAdapter((manfred, request), name='food')
-  >>> print view()
+  >>> print(view())
   <html>
   <body>
   ME GROK EAT MAMMOTH!

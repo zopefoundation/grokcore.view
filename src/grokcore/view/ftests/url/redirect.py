@@ -6,14 +6,15 @@ Views have a redirect() method to easily create redirects:
 Since the index view redirects to mammoth, we expect to see the URL
 point to mammoth:
 
-  >>> from zope.app.wsgi.testlayer import Browser, http
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open('http://localhost/manfred')
   >>> browser.url
   'http://localhost/manfred/another'
 
-  >>> response = http('GET /manfred/trustedredirect HTTP/1.0')
+  >>> response = http(wsgi_app(),
+  ...     b'GET /manfred/trustedredirect HTTP/1.0')
   >>> response.getStatus()
   302
   >>> response.getHeader('location')
@@ -23,7 +24,7 @@ point to mammoth:
   >>> browser.open('http://localhost/manfred/redirectwithstatus')
   Traceback (most recent call last):
   ...
-  HTTPError: HTTP Error 418: Unknown
+  urllib.error.HTTPError: HTTP Error 418: Unknown
   >>> browser.url
   'http://localhost/manfred/redirectwithstatus'
 

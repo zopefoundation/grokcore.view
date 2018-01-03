@@ -8,11 +8,11 @@ provider is registered for, not the provider itself.
 
 Let's look at the first template, which includes the content provider:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> browser.open("http://localhost/cave/@@index")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <grokcore.view.ftests.contentprovider.template_namespaces.Cave object at ...>
   <grokcore.view.ftests.contentprovider.template_namespaces.Index object at ...>
   <grokcore.view.ftests.contentprovider.template_namespaces.CavewomenContentProvider object at ...>
@@ -22,7 +22,7 @@ This is indeed what we expected from the content provider.
 Let's look at a template for too:
 
   >>> browser.open("http://localhost/cave/@@necklace")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <grokcore.view.ftests.contentprovider.template_namespaces.Cave object at ...>
   <grokcore.view.ftests.contentprovider.template_namespaces.Necklace object at ...>
   <grokcore.view.ftests.contentprovider.template_namespaces.CavewomenContentProviderWithTemplate object at ...>

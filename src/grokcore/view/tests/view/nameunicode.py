@@ -1,4 +1,4 @@
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 """
 You can only pass unicode to `grok.name`:
 
@@ -6,13 +6,13 @@ You can only pass unicode to `grok.name`:
   >>> pass_encodedstring()
   Traceback (most recent call last):
     ...
-  GrokImportError: The 'name' directive can only be called with
+  martian.error.GrokImportError: The 'name' directive can only be called with\
   unicode or ASCII.
 
   >>> pass_object()
   Traceback (most recent call last):
     ...
-  GrokImportError: The 'name' directive can only be called with
+  martian.error.GrokImportError: The 'name' directive can only be called with\
   unicode or ASCII.
 
 """
@@ -24,7 +24,7 @@ def pass_unicode():
 
 def pass_encodedstring():
     class View(object):
-        grok.name("ölkj")
+        grok.name("Ã¶lkj")
 
 def pass_object():
     class View(object):

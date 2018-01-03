@@ -39,7 +39,7 @@ however:
 
 import zope.interface
 import grokcore.view as grok
-from context_fixture import Club
+from .context_fixture import Club
 
 class CavemenContentProvider(grok.ContentProvider):
     grok.name('manage.cavemen')

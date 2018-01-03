@@ -16,6 +16,7 @@ import os
 import warnings
 import re
 
+import zope.interface
 import zope.component
 import grokcore.component
 import grokcore.view
@@ -242,7 +243,7 @@ def lookup(module_info, template_name, mark_as_associated=False):
     try:
         return file_template_registry.lookup(
             module_info, template_name, mark_as_associated)
-    except TemplateLookupError, e:
+    except TemplateLookupError as e:
         try:
             return inline_template_registry.lookup(
                 module_info, template_name, mark_as_associated)
@@ -354,8 +355,8 @@ def associate_template(module_info, factory, component_name,
         factory.template._initFactory(factory)
 
 
+@zope.interface.implementer(ITemplateFileFactory)
 class PageTemplateFileFactory(grokcore.component.GlobalUtility):
-    grokcore.component.implements(ITemplateFileFactory)
     grokcore.component.name('pt')
 
     def __call__(self, filename, _prefix=None):

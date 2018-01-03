@@ -24,7 +24,7 @@ implemented::
   >>> grok.skin.bind().get(directive_onaclass_fixture.NotAnInterfaceClass)
   Traceback (most recent call last):
    ...
-  AttributeError: type object 'NotAnInterfaceClass' has no attribute
+  AttributeError: type object 'NotAnInterfaceClass' has no attribute\
   'queryTaggedValue'
 
 Note that the directive only supports text (ASCII string or unicode):
@@ -32,7 +32,8 @@ Note that the directive only supports text (ASCII string or unicode):
   >>> from grokcore.view.tests.skin import directive_textonly_fixture
   Traceback (most recent call last):
     ...
-  GrokImportError: The 'skin' directive can only be called with unicode or ASCII.
+  martian.error.GrokImportError: The 'skin' directive can only be called with\
+  unicode or ASCII.
 
 In certain cases we need to set a value on a component as if the directive
 was actually used::
@@ -41,7 +42,7 @@ was actually used::
   >>> class IFoo(interface.Interface):
   ...     pass
   >>> grok.skin.set(IFoo, u'value as set')
-  >>> grok.skin.bind().get(IFoo)
-  u'value as set'
+  >>> print(grok.skin.bind().get(IFoo))
+  value as set
 
 """

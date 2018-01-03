@@ -13,6 +13,7 @@
 ##############################################################################
 """Grok components"""
 
+import six
 import sys
 import os
 import warnings
@@ -105,7 +106,7 @@ class ViewSupport(object):
         the URL as a CGI query string.
 
         """
-        if isinstance(obj, basestring):
+        if isinstance(obj, six.string_types):
             if name is not None:
                 raise TypeError(
                     'url() takes either obj argument, obj, string arguments, '
@@ -123,8 +124,8 @@ class ViewSupport(object):
         return util.url(self.request, obj, name, skin, data)
 
 
+@interface.implementer(interfaces.IGrokView)
 class View(ViewSupport, BrowserPage):
-    interface.implements(interfaces.IGrokView)
 
     def __init__(self, context, request):
         super(View, self).__init__(context, request)
@@ -216,15 +217,15 @@ class View(ViewSupport, BrowserPage):
 
     render.base_method = True
 
+
 # backwards compatibility. Probably not needed by many, but just in case.
 # please start using grokcore.view.View again.
 CodeView = View
 
 
+@interface.implementer(interfaces.ITemplate)
 class BaseTemplate(object):
     """Any sort of page template"""
-
-    interface.implements(interfaces.ITemplate)
 
     __grok_name__ = ''
     __grok_location__ = ''
@@ -240,8 +241,9 @@ class BaseTemplate(object):
     def _initFactory(self, factory):
         pass
 
+
+@interface.implementer(interfaces.IContentProvider)
 class ContentProvider(ContentProviderBase):
-    interface.implements(interfaces.IContentProvider)
 
     template = None
 
@@ -255,7 +257,7 @@ class ContentProvider(ContentProviderBase):
             self.request,
             interface.Interface,
             name=self.module_info.package_dotted_name,
-            )
+        )
 
     def default_namespace(self):
         namespace = {}

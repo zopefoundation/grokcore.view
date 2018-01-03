@@ -35,7 +35,7 @@ def default_view_name(component, module=None, **data):
 class TemplateGrokker(martian.ClassGrokker):
     martian.baseclass()
 
-    _template_order = sys.maxint/2
+    _template_order = sys.maxsize/2
 
     def grok(self, name, factory, module_info, **kw):
         # Need to store the module info to look for a template

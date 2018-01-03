@@ -9,8 +9,9 @@ provoke an error:
 
   >>> grok.testing.grok(__name__)
   From grok.testing's warn():
-  ...UserWarning: Found the following unassociated template after configuration in
-  'grokcore.view.tests.view.inline_unassociated': club...
+    ...
+  UserWarning: Found the following unassociated template after configuration\
+  in 'grokcore.view.tests.view.inline_unassociated': club...
 
   >>> warnings.warn = saved_warn
 

@@ -6,7 +6,7 @@ error:
   ...     'grokcore.view.tests.view.templatedirectorynotfound_fixture')
   Traceback (most recent call last):
   ...
-  GrokImportError: The directory 'idontexit' specified by the
+  martian.error.GrokImportError: The directory 'idontexit' specified by the\
   'templatedir' directive cannot be found.
 
 """

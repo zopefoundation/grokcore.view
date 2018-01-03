@@ -74,6 +74,6 @@ class UnassociatedTemplatesGrokker(martian.GlobalGrokker):
                 discriminator=None,
                 callable=templatereg.check_unassociated,
                 args=(),
-                order=sys.maxint
+                order=sys.maxsize
                 )
         return True

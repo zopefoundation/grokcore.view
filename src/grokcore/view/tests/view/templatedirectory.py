@@ -8,7 +8,7 @@ You can explicitly specify the template directory using grok.templatedir on modu
   >>> request = TestRequest()
   >>> from zope import component
   >>> view = component.getMultiAdapter((manfred, request), name='food')
-  >>> print view()
+  >>> print(view())
   <html>
   <body>
   ME GROK EAT MAMMOTH!

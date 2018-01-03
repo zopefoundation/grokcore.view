@@ -4,14 +4,14 @@ to resources.
 In the context of a grok application, you can use fanstatic (through
 zope.fanstatic) instead of the dummy implementation in this test:
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
   >>> root = getRootFolder()
   >>> from grokcore.view.ftests.static.simple_fixture.ellie import Mammoth
   >>> root[u'ellie'] = Mammoth()
   >>> browser.open('http://localhost/ellie')
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
   <body>
   <a href="dummy:/file.txt">Some text in a file</a>
@@ -26,9 +26,9 @@ from zope.traversing.interfaces import ITraversable
 from zope.traversing.browser.interfaces import IAbsoluteURL
 
 
+@zope.interface.implementer(ITraversable, IAbsoluteURL)
 class DummyResource(object):
     """ Dummy resource implementation. """
-    zope.interface.implements(ITraversable, IAbsoluteURL)
 
     def __init__(self, request, name=''):
         self.request = request
