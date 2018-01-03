@@ -33,7 +33,7 @@ tests_require = [
     'grok',
     'zope.app.appsetup',
     'zope.app.publication',
-    'zope.app.wsgi[testlayer] >= 4.1.0.dev0 ',
+    'zope.app.wsgi[test]',
     'zope.configuration',
     'zope.container',
     'zope.login',
