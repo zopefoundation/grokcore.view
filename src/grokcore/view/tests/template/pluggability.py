@@ -30,6 +30,7 @@ Testing the plugging in of a template language
 
 """
 import grokcore.view as grok, os
+from zope.interface import implementer
 
 # Dummy template language:
 class MyTemplate(object):
@@ -57,9 +58,8 @@ class MyPageTemplate(grok.components.GrokTemplate):
     def render(self, view):
         return self._template.render(**self.getNamespace(view))
 
+@implementer(grok.interfaces.ITemplateFileFactory)
 class MyPageTemplateFactory(grok.GlobalUtility):
-
-    grok.implements(grok.interfaces.ITemplateFileFactory)
     grok.name('mtl')
 
     def __call__(self, filename, _prefix=None):

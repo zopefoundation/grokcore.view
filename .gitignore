@@ -1,10 +1,13 @@
-*.pyc
-*.swp
+__pycache__
 .coverage
 .coverage.*
 .installed.cfg
-__pycache__
+.mr.developer.cfg
+.tox
+*.pyc
+*.swp
 bin
+dev
 develop-eggs
 htmlcov
 parts

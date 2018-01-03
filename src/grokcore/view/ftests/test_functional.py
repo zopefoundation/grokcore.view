@@ -29,16 +29,18 @@ def suiteFromPackage(name):
     files = resource_listdir(__name__, name)
     suite = unittest.TestSuite()
     getRootFolder = layer.getRootFolder
-    globs = dict(http=zope.app.wsgi.testlayer.http,
-                 getRootFolder=getRootFolder,
-                 wsgi_app=layer.make_wsgi_app,
-                 bprint=grok.testing.bprint,
-                 )
+    globs = dict(
+        bprint=grok.testing.bprint,
+        getRootFolder=getRootFolder,
+        http=zope.app.wsgi.testlayer.http,
+        wsgi_app=layer.make_wsgi_app
+        )
     optionflags = (
         renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +
         doctest.ELLIPSIS +
         doctest.NORMALIZE_WHITESPACE +
-        doctest.REPORT_NDIFF)
+        doctest.REPORT_NDIFF
+        )
 
     for filename in files:
         if filename == '__init__.py':

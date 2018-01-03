@@ -23,7 +23,7 @@ as it is associated with the view's interface::
 
 """
 
-from zope.interface import Interface
+from zope.interface import Interface, implementer
 import grokcore.view as grok
 
 class Cave(grok.Context):
@@ -32,8 +32,9 @@ class Cave(grok.Context):
 class ICavemenView(Interface):
     pass
 
+@implementer(ICavemenView)
 class Index(grok.View):
-    grok.implements(ICavemenView)
+    pass
 
 class CavemenContentProvider(grok.ContentProvider):
     grok.name('manage.cavemen')
@@ -42,8 +43,8 @@ class CavemenContentProvider(grok.ContentProvider):
     def render(self):
         return u'Hi'
 
+@implementer(ICavemenView)
 class SecondIndex(grok.View):
-    grok.implements(ICavemenView)
 
     def render(self):
         return u'Hi'

@@ -16,6 +16,7 @@ import os
 import warnings
 import re
 
+import zope.interface
 import zope.component
 import grokcore.component
 import grokcore.view
@@ -354,8 +355,8 @@ def associate_template(module_info, factory, component_name,
         factory.template._initFactory(factory)
 
 
+@zope.interface.implementer(ITemplateFileFactory)
 class PageTemplateFileFactory(grokcore.component.GlobalUtility):
-    grokcore.component.implements(ITemplateFileFactory)
     grokcore.component.name('pt')
 
     def __call__(self, filename, _prefix=None):
