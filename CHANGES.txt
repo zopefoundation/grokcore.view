@@ -4,8 +4,7 @@ Changes
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Additional test fixes.
 
 3.0 (2018-01-03)
 ----------------
