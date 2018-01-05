@@ -1,20 +1,21 @@
 import doctest
-import grok.testing
+import grokcore.view
+import grokcore.view.testing
 import os.path
 import re
 import unittest
-from pkg_resources import resource_listdir
-
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
+
+from pkg_resources import resource_listdir
 from zope.testing import renormalizing
-import grokcore.view
 
 
 class Layer(
         zope.testbrowser.wsgi.TestBrowserLayer,
         zope.app.wsgi.testlayer.BrowserLayer):
     pass
+
 
 layer = Layer(grokcore.view, allowTearDown=True)
 
@@ -30,7 +31,7 @@ def suiteFromPackage(name):
     suite = unittest.TestSuite()
     getRootFolder = layer.getRootFolder
     globs = dict(
-        bprint=grok.testing.bprint,
+        bprint=grokcore.view.testing.bprint,
         getRootFolder=getRootFolder,
         http=zope.app.wsgi.testlayer.http,
         wsgi_app=layer.make_wsgi_app

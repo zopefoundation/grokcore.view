@@ -13,12 +13,12 @@
 ##############################################################################
 """Grok test helpers
 """
-from __future__ import print_function
 import sys
 import grokcore.view
-from zope.configuration.config import ConfigurationMachine
+
 from grokcore.component import zcml
-from grokcore.view.zcml import file_template_registry
+from zope.configuration.config import ConfigurationMachine
+
 
 def grok(module_name):
     config = ConfigurationMachine()
@@ -64,3 +64,13 @@ def warn(message, category=None, stacklevel=1):
         )
     grokcore.view.testing.lastwarning += warning
     print(warning)
+
+
+def bprint(data):
+    """Python 2 and 3 doctest compatible print.
+
+    http://python3porting.com/problems.html#string-representation
+    """
+    if not isinstance(data, str):
+        data = data.decode()
+    print(data.strip())
