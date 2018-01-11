@@ -166,7 +166,10 @@ properly:
   >>> print(result)
   http://127.0.0.1/herd/manfred/index?key=%C3%A9&key=2
 
-  >>> from cgi import parse_qs
+  >>> if six.PY2:
+  ...     from urlparse import parse_qs
+  ... else:
+  ...     from urllib.parse import parse_qs
   >>> expected = 'é'
   >>> if six.PY2:
   ...     expected = six.text_type('é', 'UTF-8')
