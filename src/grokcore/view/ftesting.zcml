@@ -34,7 +34,7 @@
   <role id="grok.BoneOwner" title="Bone Owner" />
   <grant role="grok.BoneOwner" permission="bone.gold" />
 
-  <grok:grok package="grokcore.view.ftests" />
+  <grok:grok package="grokcore.view.tests.functional" />
 
   <securityPolicy
       component="zope.securitypolicy.zopepolicy.ZopeSecurityPolicy"
@@ -67,9 +67,9 @@
 
   <!-- Register a test fixture -->
   <adapter
-     factory="grokcore.view.ftests.static.simple.DummyResource"
+     factory="grokcore.view.tests.functional.static.simple.DummyResource"
      for="zope.publisher.interfaces.browser.IBrowserRequest"
      provides="zope.interface.Interface"
-     name="grokcore.view.ftests.static.simple_fixture" />
+     name="grokcore.view.tests.functional.static.simple_fixture" />
 
 </configure>
