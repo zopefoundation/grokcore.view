@@ -35,8 +35,8 @@ checker = renormalizing.RENormalizing([
 
 
 def suiteFromPackage(name):
-    tests_directory = 'base'
-    files = resource_listdir(__name__, '{}/{}'.format(tests_directory, name))
+    layer_dir = 'base'
+    files = resource_listdir(__name__, '{}/{}'.format(layer_dir, name))
     suite = unittest.TestSuite()
     for filename in files:
         if filename.endswith('_fixture.py'):
@@ -46,7 +46,7 @@ def suiteFromPackage(name):
         test = None
         if filename.endswith('.py'):
             dottedname = 'grokcore.view.tests.%s.%s.%s' % (
-                tests_directory, name, filename[:-3])
+                layer_dir, name, filename[:-3])
             test = doctest.DocTestSuite(
                 dottedname,
                 setUp=setUp,
@@ -55,7 +55,7 @@ def suiteFromPackage(name):
                 optionflags=optionflags)
         elif filename.endswith('.txt'):
             test = doctest.DocFileSuite(
-                os.path.join(tests_directory, name, filename),
+                os.path.join(layer_dir, name, filename),
                 optionflags=optionflags,
                 setUp=setUp,
                 tearDown=cleanUp,
