@@ -2,13 +2,11 @@ import doctest
 import grokcore.view
 import grokcore.view.testing
 import os.path
-import re
 import unittest
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
 
 from pkg_resources import resource_listdir
-from zope.testing import renormalizing
 
 
 class Layer(
@@ -18,12 +16,6 @@ class Layer(
 
 
 layer = Layer(grokcore.view, allowTearDown=True)
-
-
-checker = renormalizing.RENormalizing([
-    # Accommodate to exception wrapping in newer versions of mechanize
-    (re.compile(r'httperror_seek_wrapper:', re.M), 'HTTPError:'),
-    ])
 
 
 def suiteFromPackage(name):
@@ -38,10 +30,10 @@ def suiteFromPackage(name):
         wsgi_app=layer.make_wsgi_app
         )
     optionflags = (
-        renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2 +
         doctest.ELLIPSIS +
         doctest.NORMALIZE_WHITESPACE +
-        doctest.REPORT_NDIFF
+        doctest.REPORT_NDIFF +
+        doctest.IGNORE_EXCEPTION_DETAIL
         )
 
     for filename in files:
@@ -54,7 +46,6 @@ def suiteFromPackage(name):
                 layer_dir, name, filename[:-3])
             test = doctest.DocTestSuite(
                 dottedname,
-                checker=checker,
                 extraglobs=globs,
                 optionflags=optionflags)
             test.layer = layer
