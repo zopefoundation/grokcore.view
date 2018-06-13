@@ -4,7 +4,9 @@ from zope.security.checker import selectChecker
 from zope.publisher.interfaces.browser import IBrowserView
 from zope.app.publication.browser import BrowserPublication
 from zope.app.publication.requestpublicationfactories import BrowserFactory
+from zope.event import notify
 from grokcore.view import IGrokSecurityView
+from grokcore.view.interfaces import AfterTraversalEvent
 
 
 class ZopePublicationSansProxy(object):
@@ -55,6 +57,10 @@ class ZopePublicationSansProxy(object):
             checker.check(ob, '__call__')
         return super(ZopePublicationSansProxy, self).callObject(request, ob)
 
+    def afterTraversal(self, request, ob):
+        super(ZopePublicationSansProxy, self).afterTraversal(request, ob)
+        notify(AfterTraversalEvent(ob, request))
+
 
 class GrokBrowserPublication(ZopePublicationSansProxy, BrowserPublication):
     """Combines `BrowserPublication` with the Grok sans-proxy mixin.
@@ -69,7 +75,6 @@ class GrokBrowserPublication(ZopePublicationSansProxy, BrowserPublication):
         obj, path = super(GrokBrowserPublication, self).getDefaultTraversal(
             request, ob)
         return removeSecurityProxy(obj), path
-
 
 class GrokBrowserFactory(BrowserFactory):
     """Returns the classes Grok uses for browser requests and publication.
