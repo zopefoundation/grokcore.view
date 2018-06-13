@@ -13,7 +13,8 @@
 ##############################################################################
 """Grok interfaces
 """
-from zope.interface import Interface, Attribute
+from zope.interface.interfaces import IObjectEvent, ObjectEvent
+from zope.interface import Interface, Attribute, implementer
 from zope.publisher.interfaces.browser import IBrowserPage, IBrowserView
 from zope.contentprovider.interfaces import IContentProvider
 
@@ -247,3 +248,17 @@ class IContentProvider(IContentProvider):
         'static',
         "Directory resource containing the static files of the "
         "content provider's package.")
+
+
+class IAfterTraversalEvent(IObjectEvent):
+    """An event which gets sent after all publication traversal is done."""
+
+    request = Attribute("The current request")
+
+
+@implementer(IAfterTraversalEvent)
+class AfterTraversalEvent(ObjectEvent):
+
+    def __init__(self, ob, request):
+        ObjectEvent.__init__(self, ob)
+        self.request = request
