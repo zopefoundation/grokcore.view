@@ -8,4 +8,4 @@ You can not use path separator in templatedir directive:
   contain path separator.
 
 
-"""
+"""  # noqa: E501 line too long

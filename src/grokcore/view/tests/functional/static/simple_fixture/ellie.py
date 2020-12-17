@@ -8,6 +8,7 @@ class Mammoth(grok.Context):
 class Index(grok.View):
     pass
 
+
 index = grok.PageTemplate("""\
 <html>
 <body>

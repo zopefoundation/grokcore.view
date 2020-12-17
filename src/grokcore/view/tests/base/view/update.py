@@ -28,8 +28,10 @@ expressions can resolve paths:
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class CavePainting(grok.View):
     def update(self):

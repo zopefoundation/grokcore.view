@@ -1,5 +1,6 @@
 """
-When modules share a template directory, templates that have not been associated with any view class of a given module issue a UserWarning:
+When modules share a template directory, templates that have not been
+associated with any view class of a given module issue a UserWarning:
 
   >>> import grokcore.view as grok
   >>> from grokcore.view.testing import warn
@@ -17,4 +18,4 @@ When modules share a template directory, templates that have not been associated
   ...shared_template_fixture...templates...unassociated.pt...
 
   >>> warnings.warn = saved_warn
-"""
+"""  # noqa: E501 line too long

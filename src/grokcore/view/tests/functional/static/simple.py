@@ -18,7 +18,7 @@ zope.fanstatic) instead of the dummy implementation in this test:
   </body>
   </html>
 
-"""
+"""  # noqa: E501 line too long
 import zope.interface
 import zope.component
 

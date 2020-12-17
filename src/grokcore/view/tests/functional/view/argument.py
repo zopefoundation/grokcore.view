@@ -15,7 +15,8 @@ the render() method, should the method choose to take them:
 
 Supplying more arguments than those specified has no effect:
 
-  >>> browser.open("http://localhost/manfred/render?message=There&another=Is&last=More")
+  >>> browser.open(
+  ...     "http://localhost/manfred/render?message=There&another=Is&last=More")
   >>> print(browser.contents)
   Message: There
   Another: Is
@@ -35,7 +36,8 @@ The same works with views that define update():
   Message: Foo
   Another: Bar
 
-  >>> browser.open("http://localhost/manfred/update?message=There&another=Is&last=More")
+  >>> browser.open(
+  ...     "http://localhost/manfred/update?message=There&another=Is&last=More")
   >>> print(browser.contents)
   Coming to us from update():
   Message: There
@@ -49,14 +51,17 @@ The same works with views that define update():
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class RenderWithArguments(grok.View):
     grok.name('render')
 
     def render(self, message, another):
         return "Message: %s\nAnother: %s" % (message, another)
+
 
 class UpdateWithArguments(grok.View):
     grok.name('update')
@@ -65,6 +70,7 @@ class UpdateWithArguments(grok.View):
     def update(self, message, another):
         self.message = message
         self.another = another
+
 
 update = grok.PageTemplate("""
 Coming to us from update():

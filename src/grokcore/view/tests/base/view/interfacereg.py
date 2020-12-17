@@ -44,20 +44,26 @@ Multipl IPaintStyles can now be looked up by interface, rather than name:
 import grokcore.view as grok
 from zope.interface import Interface
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class IPaintStyle(Interface):
     pass
 
+
 class IChalk(IPaintStyle):
     pass
+
 
 class IImpressionist(IPaintStyle):
     pass
 
+
 class IRealist(IPaintStyle):
     pass
+
 
 class CavePainting(grok.View):
     grok.provides(IChalk)
@@ -65,12 +71,14 @@ class CavePainting(grok.View):
     def render(self):
         return "a chalk cave painting"
 
+
 class ImpressionistCavePainting(grok.View):
     grok.provides(IImpressionist)
     grok.name('')
 
     def render(self):
         return "an impressionist cave painting"
+
 
 class RealistCavePainting(grok.View):
     grok.provides(IRealist)

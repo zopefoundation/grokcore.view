@@ -27,11 +27,14 @@ from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 import grokcore.view as grok
 
+
 class CaveWoman(grok.Context):
     pass
 
+
 class CaveView(grok.View):
     grok.context(Interface)
+
 
 class Pot(grok.ContentProvider):
     grok.context(Interface)
@@ -39,8 +42,10 @@ class Pot(grok.ContentProvider):
     def render(self):
         return u"Soup pot"
 
+
 class IBoneLayer(IDefaultBrowserLayer):
     grok.skin('boneskin')
+
 
 class LayeredPot(grok.ContentProvider):
     grok.name('pot')

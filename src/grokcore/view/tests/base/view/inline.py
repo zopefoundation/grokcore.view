@@ -33,14 +33,17 @@ name:
   >>> print(view())
   <html><body><h1>GROK HUNT MAMMOTH!</h1></body></html>
 
-"""
+"""   # noqa: E501 line too long
 import grokcore.view as grok
+
 
 class Mammoth(grok.Context):
     pass
 
+
 class CavePainting(grok.View):
     pass
+
 
 cavepainting = grok.PageTemplate("""\
 <html>
@@ -56,10 +59,11 @@ cavepainting = grok.PageTemplate("""\
 </html>
 """)
 
+
 class Hunt(grok.View):
     grok.name('hunting')
+
 
 hunt = grok.PageTemplate("""\
 <html><body><h1>GROK HUNT MAMMOTH!</h1></body></html>
 """)
-

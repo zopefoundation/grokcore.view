@@ -12,7 +12,6 @@
 #
 ##############################################################################
 """Grokkers for the views code."""
-from zope import component
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 import martian
@@ -50,6 +49,3 @@ class ContentProviderGrokker(martian.ClassGrokker):
             callable=grokcore.component.provideAdapter,
             args=(factory, (context, layer, view), IContentProvider, name))
         return True
-
-
-

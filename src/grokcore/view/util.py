@@ -15,13 +15,6 @@
 """
 import six
 import sys
-PY3 = sys.version_info > (3,)
-if PY3:
-    from urllib.parse import quote, urlencode, urlparse, urlunparse
-else:
-    from urllib import quote, urlencode
-    from urlparse import urlparse, urlunparse
-
 from grokcore.security.util import check_permission
 from zope.component import getMultiAdapter
 from zope.security.checker import NamesChecker, defineChecker
@@ -29,6 +22,14 @@ from zope.contentprovider.interfaces import IContentProvider
 from zope.traversing.browser.absoluteurl import _safe as SAFE_URL_CHARACTERS
 from zope.traversing.browser.interfaces import IAbsoluteURL
 from grokcore.view import directive
+
+PY3 = sys.version_info > (3,)
+if PY3:
+    from urllib.parse import quote, urlencode, urlparse, urlunparse
+else:
+    from urllib import quote, urlencode
+    from urlparse import urlparse, urlunparse
+
 
 ASIS = object()
 

@@ -15,8 +15,10 @@
 
 import grokcore.view as grok
 
+
 class Cave(grok.Context):
     pass
 
+
 class Piepmatz(grok.View):
-    pass # template in zpt_templates/piepmatz.pt
+    pass  # template in zpt_templates/piepmatz.pt

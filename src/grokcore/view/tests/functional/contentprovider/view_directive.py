@@ -35,18 +35,23 @@ And the potview again does, by way of a component-level grok.view directive:
 
 import grokcore.view as grok
 
+
 class Fred(grok.Context):
     pass
+
 
 class CaveView(grok.View):
 
     def render(self):
         return u"Cave"
 
+
 grok.view(CaveView)
+
 
 class BoneView(grok.View):
     pass
+
 
 class CaveContentProvider(grok.ContentProvider):
     grok.name('cave')
@@ -54,10 +59,12 @@ class CaveContentProvider(grok.ContentProvider):
     def render(self):
         pass
 
+
 class PotView(grok.View):
 
     def render(self):
         return u"Pot"
+
 
 class PotCaveContentProvider(CaveContentProvider):
     grok.view(PotView)

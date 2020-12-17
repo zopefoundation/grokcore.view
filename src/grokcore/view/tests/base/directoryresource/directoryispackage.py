@@ -8,4 +8,4 @@ python package::
   Traceback (most recent call last):
     ...
   martian.error.GrokError: The 'foo' resource directory must not be a python package.
-"""
+"""  # noqa: E501 line too long

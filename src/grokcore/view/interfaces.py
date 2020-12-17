@@ -18,6 +18,7 @@ from zope.interface import Interface, Attribute, implementer
 from zope.publisher.interfaces.browser import IBrowserPage, IBrowserView
 from zope.contentprovider.interfaces import IContentProvider
 
+
 class IBaseClasses(Interface):
     View = Attribute("Base class for browser views.")
 
@@ -217,7 +218,8 @@ class ITemplateRegAPI(Interface):
 
         module_info - the module info for which to look up the template
         template_name - the name of the template to look up
-        mark_as_associated - if a template is found, mark it as associated (disabled by default).
+        mark_as_associated - if a template is found, mark it as associated
+        (disabled by default).
         """
 
 

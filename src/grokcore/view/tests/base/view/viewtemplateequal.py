@@ -44,5 +44,3 @@ class CavePainting(grok.View):
 class RealCavePainting(CavePainting):
 
     grok.template('real')
-
-
