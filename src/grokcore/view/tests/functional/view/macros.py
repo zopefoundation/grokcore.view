@@ -93,6 +93,12 @@ class Grilled(grok.View):
         self.spices = "Pepper and salt"
 
 
+grilled = grok.PageTemplate("""\
+<html metal:define-macro="spices">
+Curry
+</html>""")
+
+
 class Painting(grok.View):
     pass
 
@@ -137,14 +143,4 @@ class Burnt(grok.View):
 
 burnt = grok.PageTemplate("""\
 <html metal:use-macro="context/@@grilled/spices">
-</html>""")
-
-
-# class Grilled(grok.View):  # noqa: F811 redefinition of unused
-#     pass
-
-
-grilled = grok.PageTemplate("""\
-<html metal:define-macro="spices">
-Curry
 </html>""")
