@@ -27,14 +27,17 @@ Let's look at a template for too:
   <grokcore.view.tests.functional.contentprovider.template_namespaces.Necklace object at ...>
   <grokcore.view.tests.functional.contentprovider.template_namespaces.CavewomenContentProviderWithTemplate object at ...>
 
-"""
+"""  # noqa: E501 line too long
 import grokcore.view as grok
+
 
 class Cave(grok.Context):
     pass
 
+
 class Index(grok.View):
     pass
+
 
 class CavewomenContentProvider(grok.ContentProvider):
     grok.name('manage.cavewomen')
@@ -43,8 +46,10 @@ class CavewomenContentProvider(grok.ContentProvider):
     def render(self):
         return u'%r %r %r' % (self.context, self.view, self)
 
+
 class Necklace(grok.View):
     pass
+
 
 class CavewomenContentProviderWithTemplate(grok.ContentProvider):
     grok.name('manage.cavewomenwithtemplate')

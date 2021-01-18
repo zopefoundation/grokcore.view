@@ -76,6 +76,7 @@ class GrokBrowserPublication(ZopePublicationSansProxy, BrowserPublication):
             request, ob)
         return removeSecurityProxy(obj), path
 
+
 class GrokBrowserFactory(BrowserFactory):
     """Returns the classes Grok uses for browser requests and publication.
 

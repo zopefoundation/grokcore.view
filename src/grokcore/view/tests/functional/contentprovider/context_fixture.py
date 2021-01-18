@@ -5,6 +5,6 @@ and viewlet manager should *not* be associating with.
 
 import grokcore.view as grok
 
+
 class Club(grok.Context):
     pass
-

@@ -38,24 +38,31 @@ registered as its own view:
   <InterfaceClass zope.interface.Interface>, 'templ')
 
 
-"""
+"""  # noqa: E501 line too long
 import grokcore.view as grok
+
 
 class Mammoth(grok.Context):
     pass
 
+
 class A(grok.View):
     pass
 
+
 a = grok.PageTemplate("View A")
+
 
 class B(grok.View):
     grok.template('a')
 
+
 class C(grok.View):
     grok.template('templ')
 
+
 class D(grok.View):
     grok.template('templ')
+
 
 templ = grok.PageTemplate('Template')

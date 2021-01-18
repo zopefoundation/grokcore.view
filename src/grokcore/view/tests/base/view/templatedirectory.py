@@ -1,5 +1,6 @@
 """
-You can explicitly specify the template directory using grok.templatedir on module level:
+You can explicitly specify the template directory using grok.templatedir on
+module level:
 
   >>> grok.testing.grok(__name__)
 
@@ -20,8 +21,10 @@ import grokcore.view as grok
 
 grok.templatedir('templatedirectoryname')
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class Food(grok.View):
     pass

@@ -14,7 +14,7 @@
 """Grokkers for the views code."""
 import sys
 
-from zope import interface, component
+from zope import interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.publisher.interfaces.browser import IBrowserPage
 
@@ -28,6 +28,7 @@ from grokcore.security.util import protect_getattr
 from grokcore.view import components
 from grokcore.view import templatereg
 
+
 def default_view_name(component, module=None, **data):
     return component.__name__.lower()
 
@@ -35,7 +36,7 @@ def default_view_name(component, module=None, **data):
 class TemplateGrokker(martian.ClassGrokker):
     martian.baseclass()
 
-    _template_order = sys.maxsize/2
+    _template_order = sys.maxsize / 2
 
     def grok(self, name, factory, module_info, **kw):
         # Need to store the module info to look for a template
@@ -53,7 +54,7 @@ class TemplateGrokker(martian.ClassGrokker):
             callable=self.associate_template,
             args=(factory.module_info, factory),
             order=self._template_order
-            )
+        )
         # We increase _template_order to maintain the relative order of
         # template association between the different Grok extensions
         # (like an implicit template can be inherited between two
@@ -106,7 +107,7 @@ class ViewGrokker(martian.ClassGrokker):
             discriminator=('adapter', adapts, provides, name),
             callable=grokcore.component.provideAdapter,
             args=(factory, adapts, provides, name),
-            )
+        )
         return True
 
 
@@ -120,5 +121,5 @@ class ViewSecurityGrokker(martian.ClassGrokker):
                 discriminator=('protectName', factory, method_name),
                 callable=protect_getattr,
                 args=(factory, method_name, permission),
-                )
+            )
         return True

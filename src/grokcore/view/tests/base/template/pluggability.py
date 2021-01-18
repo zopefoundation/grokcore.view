@@ -29,8 +29,10 @@ Testing the plugging in of a template language
   <html><body>Sierra de San Fransisco is in Mexico</body></html>
 
 """
-import grokcore.view as grok, os
 from zope.interface import implementer
+import grokcore.view as grok
+import os.path
+
 
 # Dummy template language:
 class MyTemplate(object):
@@ -41,6 +43,7 @@ class MyTemplate(object):
     def render(self, **kw):
         # Silliest template language ever:
         return self._text % kw
+
 
 class MyPageTemplate(grok.components.GrokTemplate):
 
@@ -58,6 +61,7 @@ class MyPageTemplate(grok.components.GrokTemplate):
     def render(self, view):
         return self._template.render(**self.getNamespace(view))
 
+
 @implementer(grok.interfaces.ITemplateFileFactory)
 class MyPageTemplateFactory(grok.GlobalUtility):
     grok.name('mtl')
@@ -65,21 +69,29 @@ class MyPageTemplateFactory(grok.GlobalUtility):
     def __call__(self, filename, _prefix=None):
         return MyPageTemplate(filename=filename, _prefix=_prefix)
 
+
 class Cave(grok.Context):
     pass
+
 
 class Sebaayeni(grok.View):
     pass
 
-sebaayeni = MyPageTemplate('<html><body>Sebaayeni is in South Africa</body></html>')
+
+sebaayeni = MyPageTemplate(
+  '<html><body>Sebaayeni is in South Africa</body></html>')
+
 
 class Lascaux(grok.View):
     pass
 
+
 lascaux = MyPageTemplate(filename='lascaux.html')
+
 
 class Kakadu(grok.View):
     pass
+
 
 class Sierra(grok.View):
 

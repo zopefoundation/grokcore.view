@@ -14,7 +14,8 @@ Now we change the file:
 
   >>> import os.path
   >>> here = os.path.dirname(__file__)
-  >>> template_file = os.path.join(here, 'templatereload_templates', 'index.pt')
+  >>> template_file = os.path.join(
+  ...     here, 'templatereload_templates', 'index.pt')
   >>> template = open(template_file, 'w')
   >>> dummy = template.write('after')
   >>> template.close()
@@ -32,8 +33,10 @@ At last, we should change everything back to normal:
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
+
 
 class Index(grok.View):
     pass

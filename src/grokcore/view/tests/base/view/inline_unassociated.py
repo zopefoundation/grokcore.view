@@ -18,8 +18,10 @@ provoke an error:
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
+
 
 club = grok.PageTemplate("""\
 <html><body><h1>GROK CLUB MAMMOTH!</h1></body></html>

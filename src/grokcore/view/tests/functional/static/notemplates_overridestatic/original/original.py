@@ -8,7 +8,8 @@ class Cave(grok.Context):
 
 
 class StaticResource(grok.DirectoryResource):
-    grok.name('grokcore.view.tests.functional.static.notemplates_overridestatic.original')
+    grok.name('grokcore.view.tests.functional.static'
+              '.notemplates_overridestatic.original')
     grok.path('static')
 
 

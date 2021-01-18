@@ -2,7 +2,8 @@
 If multiple templates can be found, one in the module and one in the
 template directory, there is an error:
 
-  >>> grok.testing.grok(__name__)
+  # PY2 - remove '+IGNORE_EXCEPTION_DETAIL'  when dropping Python 2 support:
+  >>> grok.testing.grok(__name__)  # doctest: +IGNORE_EXCEPTION_DETAIL
   Traceback (most recent call last):
     ...
   zope.configuration.config.ConfigurationExecutionError:\
@@ -10,15 +11,18 @@ template directory, there is an error:
   templates found for name 'cavepainting': the inline template in\
   module 'grokcore.view.tests.base.view.dirandinlinetemplate' conflicts\
   with the file template in directory\
-  '...dirandinlinetemplate_templates' in:
+  '...dirandinlinetemplate_templates'
 
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
 
+
 class CavePainting(grok.View):
     pass
+
 
 cavepainting = grok.PageTemplate("nothing")

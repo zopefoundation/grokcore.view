@@ -12,5 +12,6 @@ Views without a context cannot be grokked:
 
 import grokcore.view as grok
 
+
 class Club(grok.View):
     pass

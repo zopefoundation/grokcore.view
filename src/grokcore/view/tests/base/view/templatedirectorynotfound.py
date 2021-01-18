@@ -11,4 +11,4 @@ error:
 
 """
 
-from grokcore import view as grok
+from grokcore import view as grok  # noqa: F401 imported but unused

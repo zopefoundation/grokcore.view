@@ -1,5 +1,6 @@
 """
-This should fail because you can not use path separator in templatedir directive.
+This should fail because you can not use path separator in templatedir
+directive.
 """
 import grokcore.view as grok
 import os.path

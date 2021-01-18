@@ -24,8 +24,9 @@ with the local package `modequalspkgname`::
 
   >>> warnings.warn = saved_warn
 
-"""
+"""  # noqa: E501 line too long
 import grokcore.view as grok
+
 
 class Mammoth(grok.Context):
     pass

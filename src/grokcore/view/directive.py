@@ -106,5 +106,6 @@ class path(martian.Directive):
     store = martian.ONCE
     validate = martian.validateText
 
+
 class view(OneInterfaceOrClassOnClassOrModule):
     default = IBrowserView

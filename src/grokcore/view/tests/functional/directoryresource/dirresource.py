@@ -64,4 +64,4 @@ An absolute path to a directory with resources::
   >>> bprint(browser.contents)
   Baz resource file's content.
 
-"""
+"""  # noqa: E501 line too long

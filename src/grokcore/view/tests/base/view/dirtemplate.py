@@ -26,11 +26,14 @@ Templates can also be found in a directory with the same name as the module:
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
 
+
 class CavePainting(grok.View):
     pass
+
 
 class Food(grok.View):
     pass

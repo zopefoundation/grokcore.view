@@ -21,11 +21,14 @@ View with an associated PageTemplate that is referred to using
 import grokcore.view as grok
 import os.path
 
+
 class Mammoth(grok.Context):
     pass
 
+
 class Food(grok.View):
     pass
+
 
 food = grok.PageTemplate(filename=os.path.join('templatedirectoryname',
                                                'food.pt'))

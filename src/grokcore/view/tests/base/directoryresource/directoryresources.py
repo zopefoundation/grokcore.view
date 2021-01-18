@@ -8,11 +8,11 @@
   >>> from zope.publisher.browser import TestRequest
 
   >>> resource_foo = getAdapter(TestRequest(), Interface, name='foo')
-  >>> resource_foo.context.path.replace('\\\\', '/') # Windows compliance 
+  >>> resource_foo.context.path.replace('\\\\', '/') # Windows compliance
   '...grokcore/view/tests/base/directoryresource/directoryresources_fixture/foo'
 
   >>> resource_baz = getAdapter(TestRequest(), Interface, name='baz')
-  >>> resource_baz.context.path.replace('\\\\', '/') # Windows compliance 
+  >>> resource_baz.context.path.replace('\\\\', '/') # Windows compliance
   '...grokcore/view/tests/base/directoryresource/directoryresources_fixture/bar/baz'
 
-"""
+"""  # noqa: E501 line too long

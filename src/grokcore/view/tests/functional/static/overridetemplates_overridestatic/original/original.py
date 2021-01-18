@@ -1,5 +1,3 @@
-
-
 from grokcore import view as grok
 
 
@@ -8,7 +6,8 @@ class Cave(grok.Context):
 
 
 class StaticResource(grok.DirectoryResource):
-    grok.name('grokcore.view.tests.functional.static.overridetemplates_overridestatic.original')
+    grok.name('grokcore.view.tests.functional.static'
+              '.overridetemplates_overridestatic.original')
     grok.path('static')
 
 

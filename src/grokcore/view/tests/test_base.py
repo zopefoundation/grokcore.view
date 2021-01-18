@@ -25,6 +25,7 @@ def setUp(test):
 def cleanUp(test):
     cleanup.cleanUp()
 
+
 checker = renormalizing.RENormalizing([
     # str(Exception) has changed from Python 2.4 to 2.5 (due to
     # Exception now being a new-style class).  This changes the way

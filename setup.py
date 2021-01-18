@@ -10,7 +10,7 @@ long_description = (
     read('README.txt')
     + '\n' +
     read('CHANGES.txt')
-    )
+)
 
 install_requires = [
     'grokcore.component >= 2.5',
@@ -28,7 +28,7 @@ install_requires = [
     'zope.publisher',
     'zope.security',
     'zope.traversing',
-    ]
+]
 
 tests_require = [
     'zope.app.appsetup',
@@ -43,11 +43,11 @@ tests_require = [
     'zope.site',
     'zope.testbrowser',
     'zope.testing',
-    ]
+]
 
 publication_require = [
     'zope.app.publication'
-    ]
+]
 
 setup(
     name='grokcore.view',
@@ -61,20 +61,22 @@ setup(
     license='ZPL',
     classifiers=[
         'Environment :: Web Environment',
+        'Framework :: Zope :: 3',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Zope Public License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
-        'Framework :: Zope :: 3',
-        ],
+    ],
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['grokcore'],
@@ -85,5 +87,5 @@ setup(
     extras_require={
         'test': tests_require,
         'security_publication': publication_require
-        },
+    },
 )

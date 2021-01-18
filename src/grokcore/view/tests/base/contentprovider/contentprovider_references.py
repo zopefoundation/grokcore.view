@@ -32,14 +32,17 @@ render it:
 
 import grokcore.view as grok
 
+
 class AContext(grok.Context):
     pass
+
 
 class AView(grok.View):
     grok.name('a_view')
 
     def render(self):
         return u""
+
 
 class AContentProvider(grok.ContentProvider):
     grok.name('a_content_provider')

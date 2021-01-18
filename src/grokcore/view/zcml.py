@@ -28,7 +28,6 @@ class IIgnoreTemplatesDirective(Interface):
         description=u"Pattern of template to ignore.",
         required=True)
 
+
 def ignoreTemplates(_context, pattern):
     file_template_registry.ignore_templates(pattern)
-
-

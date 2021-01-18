@@ -211,6 +211,7 @@ class FileTemplateRegistry(object):
 
         return template_dir
 
+
 inline_template_registry = InlineTemplateRegistry()
 file_template_registry = FileTemplateRegistry()
 
@@ -228,6 +229,7 @@ def _clear():
     """Remove the registries (for use by tests)."""
     inline_template_registry.clear()
     file_template_registry.clear()
+
 
 try:
     from zope.testing.cleanup import addCleanUp

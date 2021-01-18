@@ -15,11 +15,14 @@
 """
 import grokcore.view as grok
 
+
 class Mammoth(grok.Context):
     pass
 
+
 class Painting(grok.View):
     pass
+
 
 painting = grok.PageTemplate("""\
 <html>
