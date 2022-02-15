@@ -8,6 +8,8 @@ Changes
 
 - Drop support for Python 3.4.
 
+- Update the tests to ``martian >= 1.5``, thus requiring at least that version.
+
 
 3.1 (2018-06-13)
 ----------------
