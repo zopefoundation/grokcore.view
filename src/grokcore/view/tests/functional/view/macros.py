@@ -52,7 +52,8 @@ applies to macros::
   >>> import os.path
   >>> here = os.path.dirname(__file__)
   >>> template_file = os.path.join(here, 'macros_templates', 'layout.pt')
-  >>> before = open(template_file, 'r').read()
+  >>> with open(template_file, 'r') as fh:
+  ...    before = fh.read()
   >>> changed = before.replace('GROK', 'GROK RELOADED')
   >>> with open(template_file, 'w') as fh:
   ...    dummy = fh.write(changed)

@@ -1,6 +1,7 @@
 import doctest
 import os
 import re
+import six
 import unittest
 from pkg_resources import resource_listdir
 
@@ -43,6 +44,9 @@ def suiteFromPackage(name):
         if filename.endswith('_fixture.py'):
             continue
         if filename == '__init__.py':
+            continue
+        if six.PY3 and filename == 'inlinebogus.py':
+            # Python 3 can handle inline bogus characters:
             continue
         test = None
         if filename.endswith('.py'):

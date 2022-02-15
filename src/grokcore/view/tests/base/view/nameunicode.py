@@ -26,7 +26,8 @@ def pass_unicode():
 
 def pass_encodedstring():
     class View(object):
-        grok.name("ölkj")
+        # A name as bytes is not allowed:
+        grok.name(u"ölkj".encode('latin-1'))
 
 
 def pass_object():
