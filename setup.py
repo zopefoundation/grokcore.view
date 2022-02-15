@@ -15,7 +15,7 @@ long_description = (
 install_requires = [
     'grokcore.component >= 2.5',
     'grokcore.security',
-    'martian >= 0.13',
+    'martian >= 1.5',
     'setuptools',
     'six',
     'zope.browserpage',
@@ -73,6 +73,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
