@@ -14,13 +14,12 @@
 """Grokkers for the views code."""
 import sys
 
-from zope import interface
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from zope.publisher.interfaces.browser import IBrowserPage
-
 import martian
-from martian.error import GrokError
 from martian import util
+from martian.error import GrokError
+from zope import interface
+from zope.publisher.interfaces.browser import IBrowserPage
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 import grokcore.security
 import grokcore.view

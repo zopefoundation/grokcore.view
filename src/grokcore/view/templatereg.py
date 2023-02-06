@@ -13,18 +13,20 @@
 ##############################################################################
 
 import os
-import warnings
 import re
+import warnings
 
-import zope.interface
 import zope.component
+import zope.interface
+from martian.error import GrokError
+from martian.scan import module_info_from_dotted_name
+
 import grokcore.component
 import grokcore.view
-from martian.scan import module_info_from_dotted_name
-from martian.error import GrokError
-from grokcore.view.interfaces import ITemplate, ITemplateFileFactory
-from grokcore.view.interfaces import TemplateLookupError
 from grokcore.view.components import PageTemplate
+from grokcore.view.interfaces import ITemplate
+from grokcore.view.interfaces import ITemplateFileFactory
+from grokcore.view.interfaces import TemplateLookupError
 
 
 class InlineTemplateRegistry(object):

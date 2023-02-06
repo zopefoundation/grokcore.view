@@ -13,22 +13,33 @@
 ##############################################################################
 """Grok utility functions.
 """
-import six
 import sys
-from grokcore.security.util import check_permission
+
+import six
+
 from zope.component import getMultiAdapter
-from zope.security.checker import NamesChecker, defineChecker
 from zope.contentprovider.interfaces import IContentProvider
+from zope.security.checker import NamesChecker
+from zope.security.checker import defineChecker
 from zope.traversing.browser.absoluteurl import _safe as SAFE_URL_CHARACTERS
 from zope.traversing.browser.interfaces import IAbsoluteURL
+
+from grokcore.security.util import check_permission
 from grokcore.view import directive
+
 
 PY3 = sys.version_info > (3,)
 if PY3:
-    from urllib.parse import quote, urlencode, urlparse, urlunparse
+    from urllib.parse import quote
+    from urllib.parse import urlencode
+    from urllib.parse import urlparse
+    from urllib.parse import urlunparse
 else:
-    from urllib import quote, urlencode
-    from urlparse import urlparse, urlunparse
+    from urllib import quote
+    from urllib import urlencode
+
+    from urlparse import urlparse
+    from urlparse import urlunparse
 
 
 ASIS = object()

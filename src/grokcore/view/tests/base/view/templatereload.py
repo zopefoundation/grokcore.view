@@ -16,9 +16,8 @@ Now we change the file:
   >>> here = os.path.dirname(__file__)
   >>> template_file = os.path.join(
   ...     here, 'templatereload_templates', 'index.pt')
-  >>> template = open(template_file, 'w')
-  >>> dummy = template.write('after')
-  >>> template.close()
+  >>> with open(template_file, 'w') as template:
+  ...     dummy = template.write('after')
 
 and find that the output of the view has changed as well:
 

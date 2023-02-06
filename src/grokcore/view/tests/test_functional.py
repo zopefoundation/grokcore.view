@@ -1,12 +1,14 @@
 import doctest
-import grokcore.view
-import grokcore.view.testing
 import os.path
 import unittest
+
+from pkg_resources import resource_listdir
+
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
 
-from pkg_resources import resource_listdir
+import grokcore.view
+import grokcore.view.testing
 
 
 class Layer(

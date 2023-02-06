@@ -2,6 +2,7 @@
 If the template directory you specify doesn't exist, you have a comprehensible
 error:
 
+  >>> from grokcore import view as grok
   >>> grok.testing.grok(
   ...     'grokcore.view.tests.base.view.templatedirectorynotfound_fixture')
   Traceback (most recent call last):
@@ -10,5 +11,3 @@ error:
   'templatedir' directive cannot be found.
 
 """
-
-from grokcore import view as grok  # noqa: F401 imported but unused

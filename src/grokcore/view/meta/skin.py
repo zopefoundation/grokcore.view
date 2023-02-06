@@ -14,15 +14,15 @@
 """Grokkers for the skin support."""
 
 
+import martian
+from martian.error import GrokError
 from zope.interface.interface import InterfaceClass
 from zope.publisher.interfaces import IRequest
 from zope.publisher.interfaces.browser import IBrowserSkinType
 
-import martian
-from martian.error import GrokError
-
-import grokcore.view
 import grokcore.component
+import grokcore.view
+
 
 _skin_not_used = object()
 

@@ -12,14 +12,14 @@
 #
 ##############################################################################
 """Grokkers for the views code."""
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-
 import martian
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 import grokcore.security
 import grokcore.view
 from grokcore.view.interfaces import IContentProvider
-from grokcore.view.meta.views import default_view_name, TemplateGrokker
+from grokcore.view.meta.views import TemplateGrokker
+from grokcore.view.meta.views import default_view_name
 
 
 class ContentProviderTemplateGrokker(TemplateGrokker):

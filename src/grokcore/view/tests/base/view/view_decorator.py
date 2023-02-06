@@ -12,8 +12,9 @@ Using the @grok.require decorator in a view class is not allowed.
 
 """
 
-import grokcore.view as grok
 import zope.interface
+
+import grokcore.view as grok
 
 
 class Bogus(grok.Permission):

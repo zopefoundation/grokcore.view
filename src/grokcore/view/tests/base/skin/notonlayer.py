@@ -11,8 +11,9 @@ registered as a skin:
   IRequest which is required for interfaces that are used as\
   layers and are to be registered as a skin.
 """
-import grokcore.view as grok
 from zope.interface import Interface
+
+import grokcore.view as grok
 
 
 class NotALayer(Interface):

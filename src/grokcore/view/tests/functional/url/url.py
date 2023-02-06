@@ -231,8 +231,10 @@ When providing a skin **name**, it will be injected in the URLs:
 
 """
 import six
-import grokcore.view as grok
+
 from zope.container.contained import Contained
+
+import grokcore.view as grok
 
 
 class Mammoth(Contained):

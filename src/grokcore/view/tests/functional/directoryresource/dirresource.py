@@ -31,13 +31,13 @@ This resource is only available on the particular layer::
   Anotherfoo resource anotherfile's content.
 
   >>> browser.handleErrors = True
+  >>> browser.raiseHttpErrors = False
   >>> browser.open(
   ...     'http://localhost/@@/'
   ...     'grokcore.view.tests.functional.directoryresource.fixture.resource/'
   ...     'anotherfile.txt')
-  Traceback (most recent call last):
-  ...
-  urllib.error.HTTPError: HTTP Error 404: Not Found
+  >>> browser.headers['status']
+  '404 Not Found'
 
 Directoryresources can be registered under an explicit name::
 

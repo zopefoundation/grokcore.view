@@ -23,7 +23,9 @@ as it is associated with the view's interface::
 
 """
 
-from zope.interface import Interface, implementer
+from zope.interface import Interface
+from zope.interface import implementer
+
 import grokcore.view as grok
 
 

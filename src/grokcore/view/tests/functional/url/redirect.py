@@ -9,6 +9,7 @@ point to mammoth:
   >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
+  >>> browser.raiseHttpErrors = False
   >>> browser.open('http://localhost/manfred')
   >>> browser.url
   'http://localhost/manfred/another'
@@ -22,9 +23,8 @@ point to mammoth:
 
 
   >>> browser.open('http://localhost/manfred/redirectwithstatus')
-  Traceback (most recent call last):
-  ...
-  urllib.error.HTTPError: HTTP Error 418: Unknown
+  >>> browser.headers['status']
+  '418 Unknown'
   >>> browser.url
   'http://localhost/manfred/redirectwithstatus'
 

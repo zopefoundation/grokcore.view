@@ -117,9 +117,10 @@ keywords by using find()
   TypeError: url() data argument must be a dict.
 
 """
+from zope.container.contained import Contained
+
 import grokcore.view as grok
 from grokcore.view import url
-from zope.container.contained import Contained
 
 
 class Mammoth(Contained):

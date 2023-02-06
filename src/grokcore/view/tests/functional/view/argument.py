@@ -4,6 +4,7 @@
   >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
+  >>> browser.raiseHttpErrors = False
 
 Form variables such as GET parameters are dispatched to arguments of
 the render() method, should the method choose to take them:

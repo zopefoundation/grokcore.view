@@ -1,20 +1,20 @@
 import doctest
 import os
-import re
-import six
 import unittest
+
+import six
 from pkg_resources import resource_listdir
 
-from zope.testing import cleanup, renormalizing
 import zope.component.eventtesting
+from zope.testing import cleanup
 
 import grokcore.view
 from grokcore.view.templatereg import file_template_registry
 
+
 optionflags = (
     doctest.NORMALIZE_WHITESPACE +
-    doctest.ELLIPSIS +
-    renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2
+    doctest.ELLIPSIS
 )
 
 
@@ -25,15 +25,6 @@ def setUp(test):
 
 def cleanUp(test):
     cleanup.cleanUp()
-
-
-checker = renormalizing.RENormalizing([
-    # str(Exception) has changed from Python 2.4 to 2.5 (due to
-    # Exception now being a new-style class).  This changes the way
-    # exceptions appear in traceback printouts.
-    (re.compile(
-        r"ConfigurationExecutionError: <class '([\w.]+)'>:"),
-        r'ConfigurationExecutionError: \1:'), ])
 
 
 def suiteFromPackage(name):
@@ -56,7 +47,6 @@ def suiteFromPackage(name):
                 dottedname,
                 setUp=setUp,
                 tearDown=cleanUp,
-                checker=checker,
                 optionflags=optionflags)
         elif filename.endswith('.txt'):
             test = doctest.DocFileSuite(
@@ -84,8 +74,5 @@ def test_suite():
         optionflags=optionflags,
         setUp=setUp,
         tearDown=cleanUp,
-        # `checker` is not an officially supported options but it will be
-        # forwarded as **kw to the DocTestCase.
-        checker=checker,
         ))
     return suite

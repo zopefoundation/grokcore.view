@@ -14,7 +14,9 @@ contentprovider.contentprovider_render_and_template.ContentProvider'>.\
 """
 
 from zope.interface import Interface
+
 import grokcore.view as grok
+
 
 grok.templatedir('render_and_template_templates')
 

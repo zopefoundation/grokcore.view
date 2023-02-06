@@ -13,26 +13,29 @@
 ##############################################################################
 """Grok components"""
 
-import six
-import sys
-import os
-import warnings
 import fnmatch
+import os
+import sys
+import warnings
 
+import six
+
+import martian.util
 from zope import component
 from zope import interface
 from zope.browserresource import directory
 from zope.browserresource.interfaces import IResourceFactoryFactory
 from zope.contentprovider.provider import ContentProviderBase
-from zope.pagetemplate import pagetemplate, pagetemplatefile
+from zope.pagetemplate import pagetemplate
+from zope.pagetemplate import pagetemplatefile
 from zope.pagetemplate.engine import TrustedAppPT
 from zope.ptresource.ptresource import PageTemplateResourceFactory
 from zope.publisher.browser import BrowserPage
 from zope.publisher.interfaces import NotFound
 from zope.publisher.publish import mapply
 
-import martian.util
-from grokcore.view import interfaces, util
+from grokcore.view import interfaces
+from grokcore.view import util
 
 
 class ViewSupport(object):

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from zope.security.proxy import removeSecurityProxy
-from zope.security.checker import selectChecker
-from zope.publisher.interfaces.browser import IBrowserView
 from zope.app.publication.browser import BrowserPublication
 from zope.app.publication.requestpublicationfactories import BrowserFactory
 from zope.event import notify
+from zope.publisher.interfaces.browser import IBrowserView
+from zope.security.checker import selectChecker
+from zope.security.proxy import removeSecurityProxy
+
 from grokcore.view import IGrokSecurityView
 from grokcore.view.interfaces import AfterTraversalEvent
 

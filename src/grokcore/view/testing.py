@@ -14,10 +14,11 @@
 """Grok test helpers
 """
 import sys
-import grokcore.view
 
-from grokcore.component import zcml
 from zope.configuration.config import ConfigurationMachine
+
+import grokcore.view
+from grokcore.component import zcml
 
 
 def grok(module_name):
@@ -50,10 +51,10 @@ def warn(message, category=None, stacklevel=1):
     if path.endswith('.pyc') or path.endswith('.pyo'):
         path = path[:-1]
 
-    file = open(path)
-    lineno = frame.f_lineno
-    for i in range(lineno):
-        line = file.readline()
+    with open(path) as file:
+        lineno = frame.f_lineno
+        for i in range(lineno):
+            line = file.readline()
 
     warning = "%s:%s: %s: %s\n  %s" % (
         path,
