@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Views have a method that can be used to construct URLs:
 
@@ -111,21 +110,12 @@ keywords by using find()
 It works properly in the face of non-ascii characters in URLs:
 
   >>> last_path = 'árgh'
-  >>> if six.PY2:
-  ...     last_path = six.text_type(last_path, 'UTF-8')
   >>> url = another_view.url(herd, last_path)
   >>> url
   'http://127.0.0.1/herd/%C3%A1rgh'
-  >>> if six.PY2:
-  ...     from urllib import unquote
-  ... else:
-  ...     from urllib.parse import unquote
+  >>> from urllib.parse import unquote
   >>> expected = 'http://127.0.0.1/herd/árgh'
-  >>> if six.PY2:
-  ...     expected = six.text_type('http://127.0.0.1/herd/árgh', 'UTF-8')
   >>> u_unquoted = unquote(url)
-  >>> if six.PY2:
-  ...   u_unquoted = u_unquoted.decode('utf-8')
   >>> u_unquoted == expected
   True
 
@@ -166,16 +156,9 @@ properly:
   >>> print(result)
   http://127.0.0.1/herd/manfred/index?key=%C3%A9&key=2
 
-  >>> if six.PY2:
-  ...     from urlparse import parse_qs
-  ... else:
-  ...     from urllib.parse import parse_qs
+  >>> from urllib.parse import parse_qs
   >>> expected = 'é'
-  >>> if six.PY2:
-  ...     expected = six.text_type('é', 'UTF-8')
   >>> result = parse_qs(result.split('?')[1])['key'][0]
-  >>> if six.PY2:
-  ...     result = six.text_type(result, 'UTF-8')
   >>> result == expected
   True
 
@@ -230,7 +213,6 @@ When providing a skin **name**, it will be injected in the URLs:
   'http://127.0.0.1/++skin++foobar/herd/manfred/test'
 
 """
-import six
 
 from zope.container.contained import Contained
 
@@ -263,7 +245,7 @@ class Multiplier(grok.View):
         self.age = age
 
     def render(self):
-        return six.text_type(self.age * 2)
+        return str(self.age * 2)
 
 
 yetanother = grok.PageTemplate('<p tal:replace="view/url" />')
@@ -282,4 +264,4 @@ class URLTestingViewOnASkin(grok.View):
     grok.name('test')
 
     def render(self):
-        return u"I'm on a url testing skin: {0}".format(self.url())
+        return f"I'm on a url testing skin: {self.url()}"

@@ -26,7 +26,7 @@ from zope.traversing.interfaces import ITraversable
 
 
 @zope.interface.implementer(ITraversable, IAbsoluteURL)
-class DummyResource(object):
+class DummyResource:
     """ Dummy resource implementation. """
 
     def __init__(self, request, name=''):
@@ -34,7 +34,7 @@ class DummyResource(object):
         self.name = name
 
     def traverse(self, name, furtherPath):
-        name = '%s/%s' % (self.name, name)
+        name = '{}/{}'.format(self.name, name)
         return DummyResource(self.request, name=name)
 
     def __str__(self):

@@ -18,8 +18,6 @@ import os
 import sys
 import warnings
 
-import six
-
 import martian.util
 from zope import component
 from zope import interface
@@ -38,7 +36,7 @@ from grokcore.view import interfaces
 from grokcore.view import util
 
 
-class ViewSupport(object):
+class ViewSupport:
     """Mixin class providing methods and properties generally
     useful for view-ish components.
     """
@@ -109,7 +107,7 @@ class ViewSupport(object):
         the URL as a CGI query string.
 
         """
-        if isinstance(obj, six.string_types):
+        if isinstance(obj, str):
             if name is not None:
                 raise TypeError(
                     'url() takes either obj argument, obj, string arguments, '
@@ -131,7 +129,7 @@ class ViewSupport(object):
 class View(ViewSupport, BrowserPage):
 
     def __init__(self, context, request):
-        super(View, self).__init__(context, request)
+        super().__init__(context, request)
         self.__name__ = getattr(self, '__view_name__', None)
         static_name = getattr(self, '__static_name__', None)
         if static_name is not None:
@@ -227,15 +225,14 @@ CodeView = View
 
 
 @interface.implementer(interfaces.ITemplate)
-class BaseTemplate(object):
+class BaseTemplate:
     """Any sort of page template"""
 
     __grok_name__ = ''
     __grok_location__ = ''
 
     def __repr__(self):
-        return '<%s template in %s>' % (self.__grok_name__,
-                                        self.__grok_location__)
+        return f'<{self.__grok_name__} template in {self.__grok_location__}>'
 
     def _annotateGrokInfo(self, name, location):
         self.__grok_name__ = name
@@ -251,7 +248,7 @@ class ContentProvider(ContentProviderBase):
     template = None
 
     def __init__(self, context, request, view):
-        super(ContentProvider, self).__init__(context, request, view)
+        super().__init__(context, request, view)
         self.context = context
         self.request = request
         self.view = view
@@ -320,8 +317,7 @@ class GrokTemplate(BaseTemplate):
             self.setFromFilename(filename, _prefix)
 
     def __repr__(self):
-        return '<%s template in %s>' % (self.__grok_name__,
-                                        self.__grok_location__)
+        return f'<{self.__grok_name__} template in {self.__grok_location__}>'
 
     def _annotateGrokInfo(self, name, location):
         self.__grok_name__ = name

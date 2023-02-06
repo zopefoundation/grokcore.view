@@ -3,8 +3,7 @@ It is too confusing to have a template that would be implicitly
 associated with a view while that view already refers to another
 template using grok.template.  Therefore there is an error:
 
-  # PY2 - remove '+IGNORE_EXCEPTION_DETAIL'  when dropping Python 2 support:
-  >>> grok.testing.grok(__name__)  # doctest: +IGNORE_EXCEPTION_DETAIL
+  >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
   zope.configuration.config.ConfigurationExecutionError:\

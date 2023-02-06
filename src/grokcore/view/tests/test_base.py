@@ -2,7 +2,6 @@ import doctest
 import os
 import unittest
 
-import six
 from pkg_resources import resource_listdir
 
 import zope.component.eventtesting
@@ -29,19 +28,16 @@ def cleanUp(test):
 
 def suiteFromPackage(name):
     layer_dir = 'base'
-    files = resource_listdir(__name__, '{}/{}'.format(layer_dir, name))
+    files = resource_listdir(__name__, f'{layer_dir}/{name}')
     suite = unittest.TestSuite()
     for filename in files:
         if filename.endswith('_fixture.py'):
             continue
         if filename == '__init__.py':
             continue
-        if six.PY3 and filename == 'inlinebogus.py':
-            # Python 3 can handle inline bogus characters:
-            continue
         test = None
         if filename.endswith('.py'):
-            dottedname = 'grokcore.view.tests.%s.%s.%s' % (
+            dottedname = 'grokcore.view.tests.{}.{}.{}'.format(
                 layer_dir, name, filename[:-3])
             test = doctest.DocTestSuite(
                 dottedname,

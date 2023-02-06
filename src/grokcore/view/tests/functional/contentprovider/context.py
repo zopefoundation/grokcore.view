@@ -59,7 +59,7 @@ class Index(grok.View):
     grok.context(zope.interface.Interface)
 
     def render(self):
-        return u"Hi"
+        return "Hi"
 
 
 class ClubContentProvider(grok.ContentProvider):

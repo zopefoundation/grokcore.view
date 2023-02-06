@@ -13,10 +13,12 @@
 ##############################################################################
 """Grok utility functions.
 """
-import sys
+from urllib.parse import quote
+from urllib.parse import urlencode
+from urllib.parse import urlparse
+from urllib.parse import urlunparse
 
-import six
-
+from grokcore.security.util import check_permission
 from zope.component import getMultiAdapter
 from zope.contentprovider.interfaces import IContentProvider
 from zope.security.checker import NamesChecker
@@ -24,22 +26,7 @@ from zope.security.checker import defineChecker
 from zope.traversing.browser.absoluteurl import _safe as SAFE_URL_CHARACTERS
 from zope.traversing.browser.interfaces import IAbsoluteURL
 
-from grokcore.security.util import check_permission
 from grokcore.view import directive
-
-
-PY3 = sys.version_info > (3,)
-if PY3:
-    from urllib.parse import quote
-    from urllib.parse import urlencode
-    from urllib.parse import urlparse
-    from urllib.parse import urlunparse
-else:
-    from urllib import quote
-    from urllib import urlencode
-
-    from urlparse import urlparse
-    from urlparse import urlunparse
 
 
 ASIS = object()
@@ -60,10 +47,10 @@ def url(request, obj, name=None, skin=ASIS, data=None):
             path = path[idx:]
         if skin is not None:
             # If a skin is set, add ``++skin++`` as the leading path segment.
-            if isinstance(skin, six.string_types):
-                path = '/++skin++%s%s' % (skin, path)
+            if isinstance(skin, str):
+                path = '/++skin++{}{}'.format(skin, path)
             else:
-                path = '/++skin++%s%s' % (
+                path = '/++skin++{}{}'.format(
                     directive.skin.bind().get(skin), path)
 
         parts[2] = path
@@ -76,11 +63,11 @@ def url(request, obj, name=None, skin=ASIS, data=None):
         raise TypeError('url() data argument must be a dict.')
 
     for k, v in data.items():
-        if isinstance(v, six.text_type):
+        if isinstance(v, str):
             data[k] = v.encode('utf-8')
         if isinstance(v, (list, set, tuple)):
             data[k] = [
-                isinstance(item, six.text_type) and item.encode('utf-8')
+                isinstance(item, str) and item.encode('utf-8')
                 or item for item in v]
 
     return url + '?' + urlencode(data, doseq=True)

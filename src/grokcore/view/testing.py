@@ -15,10 +15,10 @@
 """
 import sys
 
+from grokcore.component import zcml
 from zope.configuration.config import ConfigurationMachine
 
 import grokcore.view
-from grokcore.component import zcml
 
 
 def grok(module_name):
@@ -56,7 +56,7 @@ def warn(message, category=None, stacklevel=1):
         for i in range(lineno):
             line = file.readline()
 
-    warning = "%s:%s: %s: %s\n  %s" % (
+    warning = "{}:{}: {}: {}\n  {}".format(
         path,
         frame.f_lineno,
         category.__name__,
@@ -65,13 +65,3 @@ def warn(message, category=None, stacklevel=1):
         )
     grokcore.view.testing.lastwarning += warning
     print(warning)
-
-
-def bprint(data):
-    """Python 2 and 3 doctest compatible print.
-
-    http://python3porting.com/problems.html#string-representation
-    """
-    if not isinstance(data, str):
-        data = data.decode()
-    print(data.strip())

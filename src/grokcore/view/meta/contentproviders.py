@@ -12,10 +12,10 @@
 #
 ##############################################################################
 """Grokkers for the views code."""
+import grokcore.security
 import martian
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
-import grokcore.security
 import grokcore.view
 from grokcore.view.interfaces import IContentProvider
 from grokcore.view.meta.views import TemplateGrokker
@@ -37,7 +37,7 @@ class ContentProviderGrokker(martian.ClassGrokker):
         # Need to store the module info object on the view class so that it
         # can look up the 'static' resource directory.
         factory.module_info = module_info
-        return super(ContentProviderGrokker, self).grok(
+        return super().grok(
             name, factory, module_info, **kw)
 
     def execute(self, factory, config, context, layer, view, name, **kw):

@@ -44,7 +44,7 @@ class CavewomenContentProvider(grok.ContentProvider):
     grok.view(Index)
 
     def render(self):
-        return u'%r %r %r' % (self.context, self.view, self)
+        return '{!r} {!r} {!r}'.format(self.context, self.view, self)
 
 
 class Necklace(grok.View):

@@ -13,14 +13,14 @@
 ##############################################################################
 """Grok
 """
+from grokcore.component import *
+from grokcore.security import *
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 # Import this module so that it's available as soon as you import the
 # 'grokcore.view' package.  Useful for tests and interpreter examples.
 import grokcore.view.testing
-from grokcore.component import *
-from grokcore.security import *
 from grokcore.view.components import ContentProvider
 from grokcore.view.components import DirectoryResource
 from grokcore.view.components import PageTemplate

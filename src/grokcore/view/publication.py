@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.app.publication.browser import BrowserPublication
 from zope.app.publication.requestpublicationfactories import BrowserFactory
 from zope.event import notify
@@ -10,7 +9,7 @@ from grokcore.view import IGrokSecurityView
 from grokcore.view.interfaces import AfterTraversalEvent
 
 
-class ZopePublicationSansProxy(object):
+class ZopePublicationSansProxy:
     """Mixin that makes a publisher remove security proxies.
 
     This mixin overrides three methods from the `IPublication`
@@ -37,11 +36,11 @@ class ZopePublicationSansProxy(object):
 
     """
     def getApplication(self, request):
-        result = super(ZopePublicationSansProxy, self).getApplication(request)
+        result = super().getApplication(request)
         return removeSecurityProxy(result)
 
     def traverseName(self, request, ob, name):
-        result = super(ZopePublicationSansProxy, self).traverseName(
+        result = super().traverseName(
             request, ob, name)
         bare_result = removeSecurityProxy(result)
         if IBrowserView.providedBy(bare_result):
@@ -56,10 +55,10 @@ class ZopePublicationSansProxy(object):
         checker = selectChecker(ob)
         if checker is not None:
             checker.check(ob, '__call__')
-        return super(ZopePublicationSansProxy, self).callObject(request, ob)
+        return super().callObject(request, ob)
 
     def afterTraversal(self, request, ob):
-        super(ZopePublicationSansProxy, self).afterTraversal(request, ob)
+        super().afterTraversal(request, ob)
         notify(AfterTraversalEvent(ob, request))
 
 
@@ -73,7 +72,7 @@ class GrokBrowserPublication(ZopePublicationSansProxy, BrowserPublication):
 
     """
     def getDefaultTraversal(self, request, ob):
-        obj, path = super(GrokBrowserPublication, self).getDefaultTraversal(
+        obj, path = super().getDefaultTraversal(
             request, ob)
         return removeSecurityProxy(obj), path
 
@@ -89,5 +88,5 @@ class GrokBrowserFactory(BrowserFactory):
 
     """
     def __call__(self):
-        request, publication = super(GrokBrowserFactory, self).__call__()
+        request, publication = super().__call__()
         return request, GrokBrowserPublication

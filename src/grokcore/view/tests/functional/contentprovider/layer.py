@@ -41,7 +41,7 @@ class Pot(grok.ContentProvider):
     grok.context(Interface)
 
     def render(self):
-        return u"Soup pot"
+        return "Soup pot"
 
 
 class IBoneLayer(IDefaultBrowserLayer):
@@ -54,4 +54,4 @@ class LayeredPot(grok.ContentProvider):
     grok.layer(IBoneLayer)
 
     def render(self):
-        return u"Layered pot"
+        return "Layered pot"

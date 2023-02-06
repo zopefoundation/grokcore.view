@@ -47,11 +47,11 @@ class CavemenContentProvider(grok.ContentProvider):
     grok.view(ICavemenView)
 
     def render(self):
-        return u'Hi'
+        return 'Hi'
 
 
 @implementer(ICavemenView)
 class SecondIndex(grok.View):
 
     def render(self):
-        return u'Hi'
+        return 'Hi'

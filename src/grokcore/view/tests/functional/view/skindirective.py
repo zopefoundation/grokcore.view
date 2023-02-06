@@ -72,11 +72,11 @@ class Happy(grok.View):
     grok.layer(PartyLayer)
 
     def render(self):
-        return u"Hee yay !"
+        return "Hee yay !"
 
 
 class Sad(grok.View):
     grok.layer(RainyLayer)
 
     def render(self):
-        return u"Aw... It rains."
+        return "Aw... It rains."

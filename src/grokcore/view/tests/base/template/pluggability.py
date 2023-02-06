@@ -37,7 +37,7 @@ import grokcore.view as grok
 
 
 # Dummy template language:
-class MyTemplate(object):
+class MyTemplate:
 
     def __init__(self, text):
         self._text = text

@@ -14,16 +14,16 @@
 """Grokkers for the views code."""
 import sys
 
+import grokcore.security
 import martian
+from grokcore.security.util import protect_getattr
 from martian import util
 from martian.error import GrokError
 from zope import interface
 from zope.publisher.interfaces.browser import IBrowserPage
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
-import grokcore.security
 import grokcore.view
-from grokcore.security.util import protect_getattr
 from grokcore.view import components
 from grokcore.view import templatereg
 
@@ -40,7 +40,7 @@ class TemplateGrokker(martian.ClassGrokker):
     def grok(self, name, factory, module_info, **kw):
         # Need to store the module info to look for a template
         factory.module_info = module_info
-        return super(TemplateGrokker, self).grok(
+        return super().grok(
             name, factory, module_info, **kw)
 
     def execute(self, factory, config, **kw):

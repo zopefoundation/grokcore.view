@@ -1,5 +1,3 @@
-
-
 from grokcore import view as grok
 
 

@@ -16,12 +16,12 @@ import os
 import re
 import warnings
 
+import grokcore.component
 import zope.component
 import zope.interface
 from martian.error import GrokError
 from martian.scan import module_info_from_dotted_name
 
-import grokcore.component
 import grokcore.view
 from grokcore.view.components import PageTemplate
 from grokcore.view.interfaces import ITemplate
@@ -29,7 +29,7 @@ from grokcore.view.interfaces import ITemplateFileFactory
 from grokcore.view.interfaces import TemplateLookupError
 
 
-class InlineTemplateRegistry(object):
+class InlineTemplateRegistry:
     """Registry managing all inline template files.
     """
 
@@ -73,7 +73,7 @@ class InlineTemplateRegistry(object):
         result = self._reg.get((module_info.dotted_name, template_name))
         if result is None:
             raise TemplateLookupError(
-                "inline template '%s' in '%s' cannot be found" % (
+                "inline template '{}' in '{}' cannot be found".format(
                     template_name, module_info.dotted_name))
         if mark_as_associated:
             self.associate(module_info, template_name)
@@ -83,7 +83,7 @@ class InlineTemplateRegistry(object):
         return self._unassociated
 
 
-class FileTemplateRegistry(object):
+class FileTemplateRegistry:
     """Registry managing all template files.
     """
 
@@ -192,7 +192,7 @@ class FileTemplateRegistry(object):
         result = self._reg.get((template_dir, template_name))
         if result is None:
             raise TemplateLookupError(
-                "template '%s' in '%s' cannot be found" % (
+                "template '{}' in '{}' cannot be found".format(
                     template_name, template_dir))
         if mark_as_associated:
             registered_template_path = self._reg.get(
@@ -292,7 +292,7 @@ def associate_template(module_info, factory, component_name,
         # template that the module in which the directive have been
         # used (to get the grok.templatedir value).
         assert module_name is not None, \
-            u"module_name cannot be None if template_name is specified."
+            "module_name cannot be None if template_name is specified."
         module_info = module_info_from_dotted_name(module_name)
         explicit_template = True
 
