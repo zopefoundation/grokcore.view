@@ -2,8 +2,7 @@
 A content provider is not allowed to define its own render method and
 have a template associated with it at the same time.
 
-  # PY2 - remove '+IGNORE_EXCEPTION_DETAIL'  when dropping Python 2 support:
-  >>> grok.testing.grok(__name__) # doctest: +IGNORE_EXCEPTION_DETAIL
+  >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
    ...
   zope.configuration.config.ConfigurationExecutionError: \
@@ -14,7 +13,9 @@ contentprovider.contentprovider_render_and_template.ContentProvider'>.\
 """
 
 from zope.interface import Interface
+
 import grokcore.view as grok
+
 
 grok.templatedir('render_and_template_templates')
 

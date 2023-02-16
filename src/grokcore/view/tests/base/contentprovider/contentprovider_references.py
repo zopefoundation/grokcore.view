@@ -41,11 +41,11 @@ class AView(grok.View):
     grok.name('a_view')
 
     def render(self):
-        return u""
+        return ""
 
 
 class AContentProvider(grok.ContentProvider):
     grok.name('a_content_provider')
 
     def render(self):
-        return u"I provide some content for a view"
+        return "I provide some content for a view"

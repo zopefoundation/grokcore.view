@@ -15,15 +15,15 @@
 
 import os
 
-from zope import interface
-from zope.security.checker import NamesChecker
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-
 import martian
 from martian.error import GrokError
+from zope import interface
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.security.checker import NamesChecker
 
 import grokcore.view
 from grokcore.view import components
+
 
 allowed_resource_names = (
     'GET', 'HEAD', 'publishTraverse', 'browserDefault', 'request', '__call__')
@@ -75,7 +75,7 @@ class DirectoryResourceGrokker(martian.ClassGrokker):
         # Need to store the module info object on the directory resource
         # class so that it can look up the actual directory.
         factory.module_info = module_info
-        return super(DirectoryResourceGrokker, self).grok(
+        return super().grok(
             name, factory, module_info, **kw)
 
     def execute(self, factory, config, name, path, layer, **kw):

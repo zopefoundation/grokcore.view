@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 You can only pass unicode to `grok.name`:
 
@@ -20,16 +19,16 @@ import grokcore.view as grok
 
 
 def pass_unicode():
-    class View(object):
-        grok.name(u'name')
+    class View:
+        grok.name('name')
 
 
 def pass_encodedstring():
-    class View(object):
+    class View:
         # A name as bytes is not allowed:
-        grok.name(u"ölkj".encode('latin-1'))
+        grok.name("ölkj".encode('latin-1'))
 
 
 def pass_object():
-    class View(object):
+    class View:
         grok.name(object())

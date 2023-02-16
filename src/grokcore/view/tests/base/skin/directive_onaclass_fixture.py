@@ -1,5 +1,5 @@
 import grokcore.view as grok
 
 
-class NotAnInterfaceClass(object):
+class NotAnInterfaceClass:
     grok.skin('failing_directive')

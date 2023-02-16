@@ -4,9 +4,10 @@ Unauthorized:
 
   >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
+  >>> browser.raiseHttpErrors = False
   >>> browser.open("http://localhost/@@painting")
-  Traceback (most recent call last):
-  urllib.error.HTTPError: HTTP Error 401: Unauthorized
+  >>> browser.headers['status']
+  '401 Unauthorized'
 
 When we log in (e.g. as a manager), we can access the view just fine:
 
@@ -24,8 +25,9 @@ A view protected with 'zope.Public' is always accessible:
   Everybody can see this.
 """
 
-import grokcore.view as grok
 import zope.interface
+
+import grokcore.view as grok
 
 
 class ViewPainting(grok.Permission):

@@ -13,10 +13,14 @@
 ##############################################################################
 """Grok interfaces
 """
-from zope.interface.interfaces import IObjectEvent, ObjectEvent
-from zope.interface import Interface, Attribute, implementer
-from zope.publisher.interfaces.browser import IBrowserPage, IBrowserView
 from zope.contentprovider.interfaces import IContentProvider
+from zope.interface import Attribute
+from zope.interface import Interface
+from zope.interface import implementer
+from zope.interface.interfaces import IObjectEvent
+from zope.interface.interfaces import ObjectEvent
+from zope.publisher.interfaces.browser import IBrowserPage
+from zope.publisher.interfaces.browser import IBrowserView
 
 
 class IBaseClasses(Interface):

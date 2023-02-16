@@ -1,5 +1,6 @@
 from grokcore import view as grok
-from grokcore.view.tests.functional.static.overridetemplates_overridestatic.original.original import CaveView  # noqa: E501 line too long
+from grokcore.view.tests.functional.static.overridetemplates_overridestatic.original.original import \
+    CaveView  # noqa: E501 line too long
 
 
 class StaticResource(grok.DirectoryResource):

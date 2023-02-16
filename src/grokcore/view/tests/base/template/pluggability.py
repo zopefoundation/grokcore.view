@@ -29,13 +29,15 @@ Testing the plugging in of a template language
   <html><body>Sierra de San Fransisco is in Mexico</body></html>
 
 """
-from zope.interface import implementer
-import grokcore.view as grok
 import os.path
+
+from zope.interface import implementer
+
+import grokcore.view as grok
 
 
 # Dummy template language:
-class MyTemplate(object):
+class MyTemplate:
 
     def __init__(self, text):
         self._text = text
@@ -51,8 +53,8 @@ class MyPageTemplate(grok.components.GrokTemplate):
         self._template = MyTemplate(string)
 
     def setFromFilename(self, filename, _prefix=None):
-        file = open(os.path.join(_prefix, filename))
-        self._template = MyTemplate(file.read())
+        with open(os.path.join(_prefix, filename)) as file:
+            self._template = MyTemplate(file.read())
 
     def namespace(self, view):
         # I'll override the default namespace here for testing:

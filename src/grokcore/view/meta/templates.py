@@ -12,8 +12,9 @@
 #
 ##############################################################################
 """Grokkers for templates."""
-import sys
 import os
+import sys
+
 import martian
 
 from grokcore.view import components

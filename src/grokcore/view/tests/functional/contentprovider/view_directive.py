@@ -43,7 +43,7 @@ class Fred(grok.Context):
 class CaveView(grok.View):
 
     def render(self):
-        return u"Cave"
+        return "Cave"
 
 
 grok.view(CaveView)
@@ -63,7 +63,7 @@ class CaveContentProvider(grok.ContentProvider):
 class PotView(grok.View):
 
     def render(self):
-        return u"Pot"
+        return "Pot"
 
 
 class PotCaveContentProvider(CaveContentProvider):

@@ -2,7 +2,9 @@
 This should fail because you can not use path separator in templatedir
 directive.
 """
-import grokcore.view as grok
 import os.path
+
+import grokcore.view as grok
+
 
 grok.templatedir('templatedirectoryname' + os.path.sep + 'subdirname')

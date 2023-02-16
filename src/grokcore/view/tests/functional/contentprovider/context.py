@@ -38,7 +38,9 @@ however:
 """
 
 import zope.interface
+
 import grokcore.view as grok
+
 from .context_fixture import Club
 
 
@@ -57,7 +59,7 @@ class Index(grok.View):
     grok.context(zope.interface.Interface)
 
     def render(self):
-        return u"Hi"
+        return "Hi"
 
 
 class ClubContentProvider(grok.ContentProvider):

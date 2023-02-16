@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """
 There is a url function that can be imported from grok to determine the
 absolute URL of objects.
 
   >>> from grokcore.view import url
-  >>> import six  # for Python 3 compatibility
 
   >>> from zope.site.folder import Folder
   >>> herd = Folder()
@@ -56,21 +54,12 @@ particular view on the object:
 It works properly in the face of non-ascii characters in URLs:
 
   >>> last_path = 'árgh'
-  >>> if six.PY2:
-  ...     last_path = six.text_type(last_path, 'UTF-8')
   >>> u = url(request, herd, last_path)
   >>> u
   'http://127.0.0.1/herd/%C3%A1rgh'
-  >>> if six.PY2:
-  ...     from urllib import unquote
-  ... else:
-  ...     from urllib.parse import unquote
+  >>> from urllib.parse import unquote
   >>> expected = 'http://127.0.0.1/herd/árgh'
-  >>> if six.PY2:
-  ...     expected = six.text_type('http://127.0.0.1/herd/árgh', 'UTF-8')
   >>> u_unquoted = unquote(u)
-  >>> if six.PY2:
-  ...   u_unquoted = u_unquoted.decode('utf-8')
   >>> u_unquoted == expected
   True
 
@@ -117,9 +106,10 @@ keywords by using find()
   TypeError: url() data argument must be a dict.
 
 """
+from zope.container.contained import Contained
+
 import grokcore.view as grok
 from grokcore.view import url
-from zope.container.contained import Contained
 
 
 class Mammoth(Contained):

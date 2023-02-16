@@ -2,8 +2,7 @@
 If multiple templates can be found, one in the module and one in the
 template directory, there is an error:
 
-  # PY2 - remove '+IGNORE_EXCEPTION_DETAIL'  when dropping Python 2 support:
-  >>> grok.testing.grok(__name__)  # doctest: +IGNORE_EXCEPTION_DETAIL
+  >>> grok.testing.grok(__name__)
   Traceback (most recent call last):
     ...
   zope.configuration.config.ConfigurationExecutionError:\

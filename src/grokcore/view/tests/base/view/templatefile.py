@@ -18,8 +18,9 @@ View with an associated PageTemplate that is referred to using
   </html>
 
 """
-import grokcore.view as grok
 import os.path
+
+import grokcore.view as grok
 
 
 class Mammoth(grok.Context):

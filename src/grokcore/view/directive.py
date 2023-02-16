@@ -17,8 +17,8 @@ import os.path
 import sys
 
 import martian
-from martian.error import GrokImportError
 from martian.directive import StoreOnce
+from martian.error import GrokImportError
 from zope.interface.interface import TAGGED_DATA
 from zope.publisher.interfaces.browser import IBrowserView
 

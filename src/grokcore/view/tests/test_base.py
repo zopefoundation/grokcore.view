@@ -1,20 +1,19 @@
 import doctest
 import os
-import re
-import six
 import unittest
+
 from pkg_resources import resource_listdir
 
-from zope.testing import cleanup, renormalizing
 import zope.component.eventtesting
+from zope.testing import cleanup
 
 import grokcore.view
 from grokcore.view.templatereg import file_template_registry
 
+
 optionflags = (
     doctest.NORMALIZE_WHITESPACE +
-    doctest.ELLIPSIS +
-    renormalizing.IGNORE_EXCEPTION_MODULE_IN_PYTHON2
+    doctest.ELLIPSIS
 )
 
 
@@ -27,36 +26,23 @@ def cleanUp(test):
     cleanup.cleanUp()
 
 
-checker = renormalizing.RENormalizing([
-    # str(Exception) has changed from Python 2.4 to 2.5 (due to
-    # Exception now being a new-style class).  This changes the way
-    # exceptions appear in traceback printouts.
-    (re.compile(
-        r"ConfigurationExecutionError: <class '([\w.]+)'>:"),
-        r'ConfigurationExecutionError: \1:'), ])
-
-
 def suiteFromPackage(name):
     layer_dir = 'base'
-    files = resource_listdir(__name__, '{}/{}'.format(layer_dir, name))
+    files = resource_listdir(__name__, f'{layer_dir}/{name}')
     suite = unittest.TestSuite()
     for filename in files:
         if filename.endswith('_fixture.py'):
             continue
         if filename == '__init__.py':
             continue
-        if six.PY3 and filename == 'inlinebogus.py':
-            # Python 3 can handle inline bogus characters:
-            continue
         test = None
         if filename.endswith('.py'):
-            dottedname = 'grokcore.view.tests.%s.%s.%s' % (
+            dottedname = 'grokcore.view.tests.{}.{}.{}'.format(
                 layer_dir, name, filename[:-3])
             test = doctest.DocTestSuite(
                 dottedname,
                 setUp=setUp,
                 tearDown=cleanUp,
-                checker=checker,
                 optionflags=optionflags)
         elif filename.endswith('.txt'):
             test = doctest.DocFileSuite(
@@ -84,8 +70,5 @@ def test_suite():
         optionflags=optionflags,
         setUp=setUp,
         tearDown=cleanUp,
-        # `checker` is not an officially supported options but it will be
-        # forwarded as **kw to the DocTestCase.
-        checker=checker,
         ))
     return suite

@@ -24,8 +24,8 @@ class IIgnoreTemplatesDirective(Interface):
     """
 
     pattern = TextLine(
-        title=u"Pattern",
-        description=u"Pattern of template to ignore.",
+        title="Pattern",
+        description="Pattern of template to ignore.",
         required=True)
 
 

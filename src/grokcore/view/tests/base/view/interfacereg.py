@@ -41,8 +41,9 @@ Multipl IPaintStyles can now be looked up by interface, rather than name:
 
 """
 
-import grokcore.view as grok
 from zope.interface import Interface
+
+import grokcore.view as grok
 
 
 class Mammoth(grok.Context):
