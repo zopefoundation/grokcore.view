@@ -5,13 +5,14 @@ from setuptools import setup
 
 
 def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+    with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
+        return f.read()
 
 
 long_description = (
-    read('README.txt')
+    read('README.rst')
     + '\n' +
-    read('CHANGES.txt')
+    read('CHANGES.rst')
 )
 
 install_requires = [
@@ -20,12 +21,12 @@ install_requires = [
     'martian >= 1.5',
     'setuptools',
     'zope.browserpage',
-    'zope.browserresource >= 3.9.0',
+    'zope.browserresource >= 3.9',
     'zope.component',
     'zope.contentprovider',
     'zope.interface',
     'zope.pagetemplate',
-    'zope.ptresource >= 3.9.0',
+    'zope.ptresource >= 3.9',
     'zope.publisher',
     'zope.security',
     'zope.traversing',
@@ -61,6 +62,7 @@ setup(
     long_description=long_description,
     license='ZPL',
     classifiers=[
+        'Development Status :: 6 - Mature',
         'Environment :: Web Environment',
         'Framework :: Zope :: 3',
         'Intended Audience :: Developers',

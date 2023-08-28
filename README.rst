@@ -241,13 +241,13 @@ Method for developers to implement:
 
 ``update(**kw)``
     This method will be called before the view's associated template
-    is rendered.  If you therefore want to pre-compuate values for the
+    is rendered.  If you therefore want to pre-compute values for the
     template, implement this method.  You can save the values on
     ``self`` (the view object) and later access them through the
     ``view`` variable from the template.  The method can take
     arbitrary keyword parameters which are filled from request values.
 
-``render(**kw)`` 
+``render(**kw)``
     Return either an encoded 8-bit string or a unicode string.  The method can
     take arbitrary keyword parameters which are filled from request values.
     If not implemented, a template is looked up in the template dir instead.
@@ -307,7 +307,7 @@ Other
 In addition, the ``grokcore.view`` package exposes the
 `grokcore.component`_ and `grokcore.security`_ APIs.
 
-.. _grokcore.component: http://pypi.python.org/pypi/grokcore.component
-.. _grokcore.security: http://pypi.python.org/pypi/grokcore.security
-.. _grokcore.view: http://pypi.python.org/pypi/grokcore.view
+.. _grokcore.component: https://pypi.org/project/grokcore.component
+.. _grokcore.security: https://pypi.org/project/grokcore.security
+.. _grokcore.view: https://pypi.org/project/grokcore.view
 
