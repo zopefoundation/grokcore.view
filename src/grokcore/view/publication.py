@@ -35,6 +35,7 @@ class ZopePublicationSansProxy:
     permissibly rendered or not.
 
     """
+
     def getApplication(self, request):
         result = super().getApplication(request)
         return removeSecurityProxy(result)
@@ -71,6 +72,7 @@ class GrokBrowserPublication(ZopePublicationSansProxy, BrowserPublication):
     the object being returned by the normal method.
 
     """
+
     def getDefaultTraversal(self, request, ob):
         obj, path = super().getDefaultTraversal(
             request, ob)
@@ -87,6 +89,7 @@ class GrokBrowserFactory(BrowserFactory):
     - The publication class that Grok uses to publish to a browser.
 
     """
+
     def __call__(self):
         request, publication = super().__call__()
         return request, GrokBrowserPublication

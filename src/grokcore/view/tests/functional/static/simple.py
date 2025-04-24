@@ -34,7 +34,7 @@ class DummyResource:
         self.name = name
 
     def traverse(self, name, furtherPath):
-        name = '{}/{}'.format(self.name, name)
+        name = f'{self.name}/{name}'
         return DummyResource(self.request, name=name)
 
     def __str__(self):

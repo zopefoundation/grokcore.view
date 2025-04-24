@@ -45,7 +45,7 @@ class SkinInterfaceDirectiveGrokker(martian.InstanceGrokker):
                 "be registered as a skin."
                 % (interface.__identifier__, interface.__identifier__),
                 interface,
-                )
+            )
         config.action(
             discriminator=('utility', IBrowserSkinType, skin),
             callable=grokcore.component.provideInterface,

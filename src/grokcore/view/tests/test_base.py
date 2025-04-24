@@ -70,5 +70,5 @@ def test_suite():
         optionflags=optionflags,
         setUp=setUp,
         tearDown=cleanUp,
-        ))
+    ))
     return suite

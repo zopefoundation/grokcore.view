@@ -81,7 +81,7 @@ class Sebaayeni(grok.View):
 
 
 sebaayeni = MyPageTemplate(
-  '<html><body>Sebaayeni is in South Africa</body></html>')
+    '<html><body>Sebaayeni is in South Africa</body></html>')
 
 
 class Lascaux(grok.View):
