@@ -60,7 +60,7 @@ def _register(config, resource_path, name, layer):
         discriminator=('adapter', adapts, provides, name),
         callable=grokcore.component.provideAdapter,
         args=(resource_factory, adapts, provides, name),
-        )
+    )
     return True
 
 

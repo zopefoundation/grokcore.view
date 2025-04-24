@@ -48,7 +48,7 @@ def url(request, obj, name=None, skin=ASIS, data=None):
         if skin is not None:
             # If a skin is set, add ``++skin++`` as the leading path segment.
             if isinstance(skin, str):
-                path = '/++skin++{}{}'.format(skin, path)
+                path = f'/++skin++{skin}{path}'
             else:
                 path = '/++skin++{}{}'.format(
                     directive.skin.bind().get(skin), path)

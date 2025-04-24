@@ -29,13 +29,13 @@ def suiteFromPackage(name):
         getRootFolder=getRootFolder,
         http=zope.app.wsgi.testlayer.http,
         wsgi_app=layer.make_wsgi_app
-        )
+    )
     optionflags = (
         doctest.ELLIPSIS +
         doctest.NORMALIZE_WHITESPACE +
         doctest.REPORT_NDIFF +
         doctest.IGNORE_EXCEPTION_DETAIL
-        )
+    )
 
     for filename in files:
         if filename == '__init__.py':
