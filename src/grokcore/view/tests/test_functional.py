@@ -1,8 +1,7 @@
 import doctest
 import os.path
 import unittest
-
-from pkg_resources import resource_listdir
+from importlib.resources import files
 
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
@@ -22,7 +21,9 @@ layer = Layer(grokcore.view, allowTearDown=True)
 
 def suiteFromPackage(name):
     layer_dir = 'functional'
-    files = resource_listdir(__name__, f'{layer_dir}/{name}')
+    package_files = files('grokcore.view.tests')
+    resource_dir = package_files / layer_dir / name
+    file_list = [f.name for f in resource_dir.iterdir()]
     suite = unittest.TestSuite()
     getRootFolder = layer.getRootFolder
     globs = dict(
@@ -37,7 +38,7 @@ def suiteFromPackage(name):
         doctest.IGNORE_EXCEPTION_DETAIL
     )
 
-    for filename in files:
+    for filename in file_list:
         if filename == '__init__.py':
             continue
 
