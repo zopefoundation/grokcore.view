@@ -22,4 +22,3 @@ The template on the inheriting view should return the url of the resource of the
   >>> print(view())
   Palace view
   http://127.0.0.1/@@/grokcore.view.tests.functional.static.overridetemplates_overridestatic.override/resource.css
-

@@ -20,4 +20,3 @@ The template on the inheriting view should return the url of the resource of the
   >>> view = component.getMultiAdapter((cave, request), name='palaceview')
   >>> print(view())
   http://127.0.0.1/@@/grokcore.view.tests.functional.static.notemplates_nooverridestatic.original/resource.css
-
